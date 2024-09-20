@@ -6,9 +6,11 @@ This project aims to improve the interface between AI agents and users by provid
 
 If you'd like to join our hackathon team, follow these steps:
 
-1. Join our Discord server: [![Discord](https://img.shields.io/discord/1251581895414911016?color=7289da&label=discord)](https://discord.gg/dJNvPEHth6)
-2. Navigate to the #agent-ui channel
-3. Post your GitHub handle, and I'll add you as a contributor.
+[![Discord](https://img.shields.io/discord/1251581895414911016?color=7289da&label=discord)](https://discord.gg/dJNvPEHth6)
+
+1. Join the discord server above.
+2. Navigate to the `#agent-ui` channel
+3. Post your `GitHub` handle.
 
 We're looking for:
 
