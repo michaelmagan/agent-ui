@@ -1,3 +1,7 @@
+// This is where you register your components with Hydra.
+// You can also register tools (functions that can be called from your components)
+// and actions (side effects that can be performed by your components).
+
 import { HydraCarouselSchema, HydraTextSchema } from "@/model/hydra"
 import { queryPineconeForDocuments } from "@/yc.service"
 import { HydraClient } from "hydra-ai"

@@ -3,17 +3,26 @@ import { SiteConfig } from "@/types"
 import { env } from "@/env.mjs"
 
 export const siteConfig: SiteConfig = {
-  name: "Next Entree",
-  author: "redpangilinan",
+  name: "Agent-UI",
+  author: "AI Tinkerers",
   description:
-    "Next.js 14+ starter template with app router, shadcn/ui, typesafe env, icons and configs setup.",
-  keywords: ["Next.js", "React", "Tailwind CSS", "Radix UI", "shadcn/ui"],
+    "An adaptive UI for agents to interface with humans, built during the AI Tinkerers Fall Hackathon.",
+  keywords: [
+    "AI",
+    "Agents",
+    "Adaptive UI",
+    "Human-AI Interaction",
+    "Next.js",
+    "Hydra-ai",
+    "React",
+    "Tailwind CSS",
+  ],
   url: {
     base: env.NEXT_PUBLIC_APP_URL,
-    author: "https://rdev.pro",
+    author: "usehydra.ai",
   },
   links: {
-    github: "https://github.com/redpangilinan/next-entree",
+    github: "https://github.com/michaelmagan/agent-ui",
   },
-  ogImage: `${env.NEXT_PUBLIC_APP_URL}/og.jpg`,
+  ogImage: `${env.NEXT_PUBLIC_APP_URL}/agent-ui-og.jpg`,
 }

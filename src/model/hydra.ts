@@ -1,6 +1,6 @@
-import { z } from "zod"
+// This is where you define the zod schema for your components.
 
-import { BadgeProps } from "@/components/ui/badge"
+import { z } from "zod"
 
 export const HydraButtonSchema = z.object({
   text: z.string(),

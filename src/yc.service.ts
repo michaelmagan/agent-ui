@@ -1,3 +1,6 @@
+// This is an example of a service that can be called as
+// tool in a a component.
+
 "use server"
 
 import { Document } from "@/model/document"
