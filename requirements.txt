@@ -1,0 +1,10 @@
+pandas
+jupyter
+notebook
+matplotlib
+seaborn
+bs4
+pinecone
+openai
+tiktoken
+tenacity
