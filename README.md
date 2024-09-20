@@ -1,81 +1,80 @@
-# Adaptive UI for Agents
+# 🧠 Adaptive UI for Agents 🤖
 
-This project aims to improve the interface between AI agents and users by providing an adaptive UI. It supports handling sensitive data like passwords/secrets, makes user interactions easier through dropdowns, buttons, sliders, etc., and presents data back to users more effectively using graphs, visualizations, and UI elements.
+[![AI Tinkerers - Humans-in-the-Loop Hackathon with Anthropic 2024](https://img.shields.io/badge/AI%20Tinkerers-Humans--in--the--Loop%20Hackathon%202024-blueviolet?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyek0xMCAyMHYtNmg0djZoLTR6bTQtOGgtNFY0aDR2OHoiLz48L3N2Zz4=)](https://seattle.aitinkerers.org/p/ai-tinkerers-humans-in-the-loop-hackathon-with-anthropic)
+[![Adaptive UI](https://img.shields.io/badge/Adaptive%20UI-for%20Agents-ff69b4?style=for-the-badge&logo=react)](https://github.com/michaelmagan/agent-ui)
+[![Discord](https://img.shields.io/discord/1251581895414911016?color=7289da&label=discord&style=for-the-badge&logo=discord)](https://discord.gg/dJNvPEHth6)
 
-## Join Our Hackathon Team
+## 🚀 About The Project
 
-If you'd like to join our hackathon team, follow these steps:
+This project aims to revolutionize the interface between AI agents and users by providing an adaptive UI. Our key features include:
 
-[![Discord](https://img.shields.io/discord/1251581895414911016?color=7289da&label=discord)](https://discord.gg/dJNvPEHth6)
+- 🔒 Secure handling of sensitive data (passwords/secrets)
+- 🖱️ Enhanced user interactions through intuitive UI elements (dropdowns, buttons, sliders)
+- 📊 Effective data presentation using graphs and visualizations
 
-1. Join the discord server above.
+## 🛠️ Technologies
+
+We're leveraging cutting-edge technologies:
+
+- [Hydra-AI](https://github.com/michaelmagan/hydraai) - For adaptive UI
+- [Anthropic](https://www.anthropic.com/) - AI capabilities
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Pinecone](https://www.pinecone.io/) - Vector database
+
+## 🤝 Join Our Hackathon Team
+
+We're looking for talented individuals with experience in:
+
+- 🤖 Building AI agents
+- ⚛️ React development
+- 🧠 Memory or vector databases
+- 🎨 UI/UX design
+
+To join:
+
+1. Join our [Discord server](https://discord.gg/dJNvPEHth6)
 2. Navigate to the `#agent-ui` channel
-3. Post your `GitHub` handle.
+3. Post your GitHub handle
 
-We're looking for:
+## 🔑 Key Tasks
 
-- People with experience building agents
-- People with experience building with React
-- People with experience with memory or vector databases
-- Peoplw with design skills :)
+- [ ] Create an AI agent with tools requiring secure access
+- [ ] Implement secret storage and access for AI models
+- [ ] Develop flexible UIs for agent-user interactions
+- [ ] Create a UI for managing multiple agents simultaneously
+- [ ] Design a monitoring interface for agent actions
+- [ ] Implement UI components for agent output display (graphs, slides, text boxes)
 
-## Technologies
-
-We're using:
-
-- [Hydra-AI](https://github.com/michaelmagan/hydraai) for the adaptive UI
-- Anthropic for AI capabilities
-- Next.js for the React framework
-- Tailwind CSS for styling
-- Pinecone for vector database
-
-## Preflight
-
--
-
-## Key Tasks
-
-- Create an AI agent (especially one with tools that need passwords or API key access)
-- Add a way for the app to store secrets and give the AI model an identifier and a way to access those secrets
-- Implement a UI with the ability to store secrets, usernames/passwords (as mentioned above)
-- Create flexible UIs for Agents asking for user inputs.
-- UI for running multiple agents at once and notifications for when the agents need input.
-- UI to monitor the actions of Agents (see runing logs.)
-- UI for the agents to display final outputs: graphs, slides, text boxes etc.
-
-## Getting Started
+## 🚀 Getting Started
 
 1. Clone the repository
-2. Set up your environment variables by creating a `.env.local` file and populating it with the necessary keys
-3. Install the required Node.js packages:
-   ```
+2. Set up environment variables in `.env.local`
+3. Install dependencies:
+   ```bash
    npm install
    ```
 4. Start the development server:
-   ```
+   ```bash
    npm run dev
    ```
-5. Create a branch with your changes.
-6. Perform a pull request when completed.
+5. Create a branch for your changes
+6. Submit a pull request when ready
 
-## Project Structure
+## 📁 Project Structure
 
-The project is structured as follows:
-
-- `/src`: Main source directory
-
-  - `/app`: Next.js app directory
-    - `components`: App-specific components
-      - `page.tsx`: Main page component
-      - `layout.tsx`: Layout component
-  - `/components`: Reusable components
-    - `/chat`: Chat-related components
-    - `/hydra`: Hydra-specific components
-    - `/ui`: UI components
-  - `/model`: Data models and schemas
-    - `document.ts`: Document model
-    - `hydra.ts`: Hydra-related schemas
-  - `/styles`: Styling files
-  - `/types`: TypeScript type definitions
-  - `hydra-client.ts`: Where you register hydra components with schemas and tools.
-  - `yc.service.ts`: An example service that can be used as a tool.
+- `/app`: Next.js app directory
+  - `components`: App-specific components
+    - `page.tsx`: Main page component
+    - `layout.tsx`: Layout component
+- `/components`: Reusable components
+  - `/chat`: Chat-related components
+  - `/hydra`: Hydra-specific components
+  - `/ui`: UI components
+- `/model`: Data models and schemas
+  - `document.ts`: Document model
+  - `hydra.ts`: Hydra-related schemas
+- `/styles`: Styling files
+- `/types`: TypeScript type definitions
+- `hydra-client.ts`: Where you register hydra components with schemas and tools.
+- `yc.service.ts`: An example service that can be used as a tool.
