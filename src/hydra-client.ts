@@ -11,7 +11,7 @@ import { HydraCarousel } from "@/components/hydra/carousel"
 import { HydraText } from "@/components/hydra/text"
 
 export const getHydraClient = (): HydraClient => {
-  const hydra = new HydraClient()
+  const hydra = new HydraClient("claude-3-sonnet-20240229", "anthropic")
   return hydra
 }
 
