@@ -33,9 +33,10 @@ We're looking for talented individuals with experience in:
 
 To join:
 
-1. Join our [Discord server](https://discord.gg/dJNvPEHth6)
-2. Navigate to the `#agent-ui` channel
-3. Post your GitHub handle
+1. Come find me: [here is what I look like](https://x.com/mrmagan_/photo)
+2. Join our [discord server](https://discord.gg/dJNvPEHth6)
+3. Navigate to the `#agent-ui` channel
+4. Post your GitHub handle in the channel
 
 ## 🔑 Key Tasks
 
