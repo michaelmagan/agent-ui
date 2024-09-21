@@ -2,14 +2,21 @@
 The search node is responsible for searching the internet for information.
 """
 import json
+import sys
+from pathlib import Path
 from datetime import datetime
+
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import SystemMessage
 
 from langchain_core.runnables import RunnableConfig
 from langchain_community.tools import TavilySearchResults
 
-from state import AgentState
+# Add the project root and the src directory to sys.path
+project_root = Path(__file__).resolve().parents[2]
+sys.path.extend([str(project_root), str(project_root / 'src')])
+
+from agent.state import AgentState
 
 async def search_node(state: AgentState, config: RunnableConfig):
     """
