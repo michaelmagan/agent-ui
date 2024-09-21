@@ -1,0 +1,6 @@
+langchain 
+langchain-anthropic
+langgraph
+copilotkit
+uvicorn
+fastapi
