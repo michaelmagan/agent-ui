@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { CopilotKit } from "@copilotkit/react-core"
 
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
@@ -36,8 +37,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="flex-1 overflow-hidden">{children}</main>
+          {/* TODO: Might need to add agent="name of agent" */}
+          <CopilotKit runtimeUrl="/api/copilotkit">
+            <Header />
+            <main className="flex-1 overflow-hidden">{children}</main>
+          </CopilotKit>
         </ThemeProvider>
         <Toaster />
       </body>
