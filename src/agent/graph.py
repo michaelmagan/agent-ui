@@ -4,6 +4,8 @@ It defines the workflow graph and the entry point for the agent.
 """
 # pylint: disable=line-too-long, unused-import
 import json
+import sys
+from pathlib import Path
 
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -14,8 +16,12 @@ from langgraph.checkpoint.memory import MemorySaver
 # from ai_researcher.summarize import summarize_node
 # from ai_researcher.extract import extract_node
 
-from state import AgentState
-from search import search_node
+# Add the project root and the src directory to sys.path
+project_root = Path(__file__).resolve().parents[2]
+sys.path.extend([str(project_root), str(project_root / 'src')])
+
+from agent.state import AgentState
+from agent.search import search_node
 
 def route(state):
     """Route to research nodes."""
