@@ -2,16 +2,20 @@
 // You can also register tools (functions that can be called from your components)
 // and actions (side effects that can be performed by your components).
 
-import { HydraCarouselSchema, HydraTextSchema } from "@/model/hydra"
+import { HydraCarouselSchema, HydraTextSchema, HydraFormSchema, HydraProfileSchema, HydraFeedbackSchema, HydraRecentTweetsSchema } from "@/model/hydra"
 import { queryPineconeForDocuments } from "@/yc.service"
 import { HydraClient } from "hydra-ai"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import { HydraCarousel } from "@/components/hydra/carousel"
 import { HydraText } from "@/components/hydra/text"
+import { HydraForm } from "@/components/hydra/form"
+import { Profile } from "@/components/hydra/profile"
+import { Feedback } from "@/components/hydra/feedback"
+import { RecentTweets } from "@/components/hydra/recentTweets"
 
 export const getHydraClient = (): HydraClient => {
-  const hydra = new HydraClient("gpt-4o", "openai")
+  const hydra = new HydraClient()
   return hydra
 }
 
@@ -49,6 +53,38 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
       HydraText,
       {
         HydraText: zodToJsonSchema(HydraTextSchema),
+      }
+    ),
+    hydra.registerComponent(
+      "HydraForm",
+      "A form component for creating and submitting user input. The form can have multiple fields of various types, and a submit button. Each field should have a unique 'id', 'label', and 'type'. The form handles submission and passes the data to the provided onSubmit function.",
+      HydraForm,
+      {
+        HydraForm: zodToJsonSchema(HydraFormSchema),
+      }
+    ),
+    hydra.registerComponent(
+      "Profile",
+      "A profile component for displaying user information including name, avatar, social media links, and compatibility score.",
+      Profile,
+      {
+        Profile: zodToJsonSchema(HydraProfileSchema),
+      }
+    ),
+    hydra.registerComponent(
+      "Feedback",
+      "A feedback component for collecting user feedback with thumbs up and thumbs down buttons.",
+      Feedback,
+      {
+        Feedback: zodToJsonSchema(HydraFeedbackSchema),
+      }
+    ),
+    hydra.registerComponent(
+      "RecentTweets",
+      "A component for displaying recent tweets. It shows up to three recent tweets, each including the author's avatar, name, handle, tweet content, and timestamp. It also provides a button to open the author's Twitter profile.",
+      RecentTweets,
+      {
+        RecentTweets: zodToJsonSchema(HydraRecentTweetsSchema),
       }
     ),
   ])

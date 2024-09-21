@@ -3,87 +3,116 @@
 
 "use server"
 
-import { Document } from "@/model/document"
-import { OpenAI } from "openai"
-import { PineconeClient } from "pinecone-client"
-
-let pineconeClient: PineconeClient<Document["metadata"]> | null = null
-let openaiClient: OpenAI | null = null
-
-const getPineconeClient = (): PineconeClient<Document["metadata"]> => {
-  if (!pineconeClient) {
-    pineconeClient = new PineconeClient<Document["metadata"]>({
-      apiKey: process.env.PINECONE_API_KEY!,
-      baseUrl: process.env.PINECONE_BASE_URL!,
-      namespace: process.env.PINECONE_INDEX_NAME!,
-    })
-  }
-  return pineconeClient
+// Redefine the Document type to match our data
+type Document = {
+  id: string;
+  values: never[];
+  metadata: {
+    name: string;
+    "one-liner": string;
+    batch: string;
+    location: string;
+    type: string;
+    categories: string;
+    status: string;
+  };
+  score: number;
 }
 
-const getOpenAIClient = (): OpenAI => {
-  if (!openaiClient) {
-    openaiClient = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY!,
-    })
-  }
-  return openaiClient
-}
+// Fake company data
+const fakeCompanyData: Document[] = [
+  {
+    id: "1",
+    values: [],
+    metadata: {
+      name: "TechNova",
+      "one-liner": "AI-powered software development tools",
+      batch: "W2024",
+      location: "San Francisco, CA",
+      type: "B2B",
+      categories: "Developer Tools",
+      status: "Active",
+    },
+    score: 0.95,
+  },
+  {
+    id: "2",
+    values: [],
+    metadata: {
+      name: "GreenLeaf",
+      "one-liner": "Sustainable agriculture solutions",
+      batch: "S2023",
+      location: "Austin, TX",
+      type: "B2B",
+      categories: "AgTech",
+      status: "Active",
+    },
+    score: 0.88,
+  },
+  {
+    id: "3",
+    values: [],
+    metadata: {
+      name: "HealthPulse",
+      "one-liner": "Remote patient monitoring platform",
+      batch: "W2023",
+      location: "Boston, MA",
+      type: "B2B, B2C",
+      categories: "HealthTech",
+      status: "Active",
+    },
+    score: 0.82,
+  },
+  {
+    id: "4",
+    values: [],
+    metadata: {
+      name: "QuantumLeap",
+      "one-liner": "Quantum computing research and development",
+      batch: "S2022",
+      location: "Palo Alto, CA",
+      type: "B2B",
+      categories: "Deep Tech",
+      status: "Active",
+    },
+    score: 0.79,
+  },
+  {
+    id: "5",
+    values: [],
+    metadata: {
+      name: "EcoCharge",
+      "one-liner": "Fast-charging solutions for electric vehicles",
+      batch: "W2024",
+      location: "Detroit, MI",
+      type: "B2B, B2C",
+      categories: "CleanTech",
+      status: "Active",
+    },
+    score: 0.75,
+  },
+]
 
 export async function queryPineconeForDocuments(
   query: string,
   topK: number = 5
 ): Promise<Document[]> {
   "use server"
-  const client = getPineconeClient()
+  
+  console.log(`Query: ${query}`)
+  console.log(`Top ${topK} results:`)
 
-  const queryEmbedding = await getQueryEmbedding(query)
+  // Simulate a delay to mimic a real API call
+  await new Promise(resolve => setTimeout(resolve, 500))
 
-  try {
-    const queryResponse = await client.query({
-      vector: queryEmbedding,
-      topK,
-      includeMetadata: true,
-    })
+  // Return the fake data, limited to topK
+  const results = fakeCompanyData.slice(0, topK)
 
-    console.log(`Query: ${query}`)
-    console.log(`Top ${topK} results:`)
-
-    if (!queryResponse.matches || queryResponse.matches.length === 0) {
-      console.log("No matches found.")
-      return []
-    }
-
-    const results = queryResponse.matches.map((match) => {
-      console.log(`Score: ${match.score?.toFixed(4)}`)
-      if (match.metadata) {
-        console.log(`Name: ${match.metadata["name"] || "N/A"}`)
-      } else {
-        console.log("Metadata not available for this match.")
-      }
-      console.log("---")
-
-      return {
-        id: match.id,
-        values: [], // Add this line to include the 'values' property
-        metadata: match.metadata as Document["metadata"],
-        score: match.score || 0,
-      }
-    })
-
-    return results as Document[]
-  } catch (error) {
-    console.error("Error querying Pinecone:", error)
-    throw error
-  }
-}
-
-async function getQueryEmbedding(query: string): Promise<number[]> {
-  "use server"
-  const openai = getOpenAIClient()
-  const response = await openai.embeddings.create({
-    model: "text-embedding-3-small",
-    input: query,
+  results.forEach((result, index) => {
+    console.log(`Score: ${result.score.toFixed(4)}`)
+    console.log(`Name: ${result.metadata.name || "N/A"}`)
+    console.log("---")
   })
-  return response.data[0].embedding
+
+  return results
 }
