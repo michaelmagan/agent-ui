@@ -43,23 +43,25 @@ export const HydraCard: React.FC<HydraCardProps> = ({
   const renderWithPopover = (id: string, element: React.ReactNode) => (
     <Popover key={id}>
       <PopoverTrigger asChild>
-        <div className={`${getFeedbackBorderClass(id)} transition-colors duration-200`}>
+        <div className={`${getFeedbackBorderClass(id)} transition-colors duration-200 relative`}>
           {element}
+          <div className="absolute bottom-0 left-0">
+            <PopoverContent className="w-auto p-0" align="start" side="bottom">
+              <div className="flex space-x-2 p-2">
+                <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, 'positive')}>
+                  <ThumbsUp className="h-4 w-4" />
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, 'negative')}>
+                  <ThumbsDown className="h-4 w-4" />
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, null)}>
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            </PopoverContent>
+          </div>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="end">
-        <div className="flex space-x-2 p-2">
-          <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, 'positive')}>
-            <ThumbsUp className="h-4 w-4" />
-          </Button>
-          <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, 'negative')}>
-            <ThumbsDown className="h-4 w-4" />
-          </Button>
-          <Button size="sm" variant="ghost" onClick={() => handleFeedback(id, null)}>
-            <X className="h-4 w-4" />
-          </Button>
-        </div>
-      </PopoverContent>
     </Popover>
   )
 

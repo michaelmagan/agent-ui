@@ -15,6 +15,9 @@ export interface ChatMessage {
   component?: ReactElement
 }
 
+// update this to be more "agentic"
+// the agent is going to kick off a thing so there needs to be a state for when the agent is thinking
+// then the agent will ask for input
 interface ChatState {
   messages: ChatMessage[]
   addMessage: (message: ChatMessage) => void
