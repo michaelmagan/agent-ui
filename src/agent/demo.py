@@ -18,6 +18,15 @@ from copilotkit.integrations.fastapi import add_fastapi_endpoint
 from copilotkit import CopilotKitSDK, LangGraphAgent
 
 app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+@app.get("/test")
+async def test():
+    return {"message": "Test endpoint is working"}
+
 sdk = CopilotKitSDK(
     agents=[
         LangGraphAgent(
@@ -33,7 +42,7 @@ add_fastapi_endpoint(app, sdk, "/copilotkit")
 def main():
     """Run the uvicorn server."""
     print("Michael - Starting the uvicorn server...")
-    uvicorn.run("agent.demo:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("src.agent.demo:app", host="127.0.0.1", port=8000, reload=True)
 
 if __name__ == "__main__":
     main()
