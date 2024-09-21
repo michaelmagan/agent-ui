@@ -11,13 +11,13 @@ import "@/styles/globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "YC Archive Explorer - AI-Powered YC Startup Insights",
+  title: "Co-Finder - A Demo App Built on Agent UI",
   description:
-    "Explore Y Combinator's history with our AI-driven interface, accessing data on all past YC founders and startups.",
+    "Find your ideal co-founder with our AI-driven interface, a demo app showcasing the capabilities of Agent UI.",
   openGraph: {
-    title: "YC Archive Explorer - AI-Powered YC Startup Insights",
+    title: "Co-Founder Finder - A Demo App Built on Agent UI",
     description:
-      "Dive into Y Combinator's rich history using our generative UI. Discover insights on all past YC founders and startups through an intelligent, interactive experience.",
+      "Discover your perfect co-founder match using our generative UI. Experience the power of Agent UI in this interactive demo application.",
   },
 }
 

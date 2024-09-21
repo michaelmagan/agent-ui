@@ -1,28 +1,19 @@
-import { Zap } from "lucide-react";
-import React from "react";
+import React from "react"
+import { Zap } from "lucide-react"
 
 export const PoweredBy = () => {
   return (
-    <div className="text-sm text-center my-2 text-zinc-500">
-      <Zap className="w-4 h-4 inline-block mr-1" />
+    <div className="my-2 text-center text-sm text-zinc-500">
+      <Zap className="mr-1 inline-block h-4 w-4" />
       Powered by{" "}
       <a
-        href="https://github.com/michaelmagan/hydraai"
+        href="https://usehydra.ai"
         target="_blank"
         rel="noopener noreferrer"
-        className="pointer-events-auto font-bold py-1 border-b text-black dark:text-white border-zinc-200 dark:border-zinc-800 hover:border-b-2 hover:border-black dark:hover:border-black"
+        className="pointer-events-auto border-b border-zinc-200 py-1 font-bold text-black hover:border-b-2 hover:border-black dark:border-zinc-800 dark:text-white dark:hover:border-black"
       >
         hydra-ai
-      </a>{" "}
-      and{" "}
-      <a
-        href="https://mainframe.so"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="pointer-events-auto font-bold py-1 border-b text-black dark:text-white border-zinc-200 dark:border-zinc-800 hover:border-b-2 hover:border-black dark:hover:border-black"
-      >
-        Mainframe
       </a>
     </div>
-  );
-};
+  )
+}
