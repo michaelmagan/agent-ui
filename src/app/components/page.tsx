@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import {
   HydraBadge as HydraBadgeType,
@@ -6,6 +8,7 @@ import {
   HydraCarousel as HydraCarouselType,
 } from "@/model/hydra"
 
+import { Agent } from "@/components/agent"
 import { HydraButton } from "@/components/hydra/button"
 import { HydraCard } from "@/components/hydra/card"
 import { HydraCarousel } from "@/components/hydra/carousel"
@@ -87,6 +90,9 @@ const HomePage: React.FC = () => {
       <section>
         <h2 className="mb-4 text-2xl font-semibold">Carousel</h2>
         <HydraCarousel {...sampleCarousel} />
+      </section>
+      <section>
+        <Agent />
       </section>
     </div>
   )
