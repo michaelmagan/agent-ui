@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from typing import Annotated, Literal, TypedDict
 from langchain_anthropic import ChatAnthropic
 from langchain_core.tools import tool
@@ -5,6 +7,8 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph, MessagesState
 from langgraph.prebuilt import ToolNode
 
+# Load environment variables from .env.local
+load_dotenv('.env.local')
 
 # Define the tools for the agent to use
 @tool
@@ -20,7 +24,7 @@ tools = [search]
 
 tool_node = ToolNode(tools)
 
-model = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0).bind_tools(tools)
+model = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0, anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')).bind_tools(tools)
 
 # Define the function that determines whether to continue or not
 def should_continue(state: MessagesState) -> Literal["tools", END]:

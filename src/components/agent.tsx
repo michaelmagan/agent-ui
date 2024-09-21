@@ -1,21 +1,18 @@
-import React, { useState } from "react"
+import React from "react"
 import { useCoAgent } from "@copilotkit/react-core"
 
 import { Button } from "@/components/ui/button"
 
 const Agent: React.FC = () => {
-  const [isRunning, setIsRunning] = useState(false)
   const { state, setState, start, stop, run, running } = useCoAgent({
-    name: "search_agent",
+    name: "cofinder_agent",
   })
 
   const handleToggleAgent = () => {
-    if (isRunning) {
+    if (running) {
       stop()
-      setIsRunning(false)
     } else {
-      start()
-      setIsRunning(true)
+      run()
     }
   }
 
@@ -25,10 +22,10 @@ const Agent: React.FC = () => {
         onClick={handleToggleAgent}
         className="px-6 py-2 text-lg font-semibold"
       >
-        {isRunning ? "Stop Agent" : "Start Agent"}
+        {running ? "Stop Agent" : "Start Agent"}
       </Button>
       <p className="text-sm text-gray-500">
-        {isRunning
+        {running
           ? "The car rental agent is running."
           : "Click to start the car rental agent."}
       </p>

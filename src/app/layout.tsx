@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {/* TODO: Might need to add agent="name of agent" */}
-          <CopilotKit runtimeUrl="/api/copilotkit">
+          <CopilotKit runtimeUrl="/api/copilotkit" agent="cofinder_agent">
             <Header />
             <main className="flex-1 overflow-hidden">{children}</main>
           </CopilotKit>
