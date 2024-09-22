@@ -15,6 +15,35 @@ export interface ChatMessage {
   component?: ReactElement
 }
 
+const componentFlow = [
+  {
+    name: "Feedback",
+    description:
+      "Ask the user questions to clarify their query for teamates, co-founders, or friends.",
+  },
+  {
+    name: "HydraCarousel",
+    description: "Query for founders that match their Feedback.",
+  },
+  {
+    name: "RecentTweets",
+    description: "Show the user recent tweets for the person they selected.",
+  },
+  {
+    name: "HydraText",
+    description: "Show a UI to send the person a message.",
+  },
+]
+
+const getNextComponentFlow = (() => {
+  let index = 0
+  return () => {
+    const component = componentFlow[index]
+    index = (index + 1) % componentFlow.length
+    return component
+  }
+})()
+
 interface ChatState {
   messages: ChatMessage[]
   addMessage: (message: ChatMessage) => void
@@ -33,7 +62,8 @@ export const useChatStore = create<ChatState>((set) => ({
 }))
 
 export default function ChatBox() {
-  const { messages, addMessage, isAgentThinking, setAgentThinking } = useChatStore()
+  const { messages, addMessage, isAgentThinking, setAgentThinking } =
+    useChatStore()
   const [isHydraReady, setIsHydraReady] = useState(false)
   const [isRegistering, setIsRegistering] = useState(false)
 
@@ -63,7 +93,12 @@ export default function ChatBox() {
   const fetchResponse = async (message: string) => {
     setAgentThinking(true)
     try {
-      const response = await hydra.generateComponent(message)
+      const nextComponent = getNextComponentFlow()
+      // This is just a hack to get the hydra client to generate the next component in the flow
+      const messageWithComponent =
+        message + nextComponent.name + nextComponent.description
+      console.log("Message with component:", messageWithComponent)
+      const response = await hydra.generateComponent(messageWithComponent)
       console.log("Hydra client result:", response)
       if (
         typeof response === "object" &&

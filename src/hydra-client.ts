@@ -2,18 +2,29 @@
 // You can also register tools (functions that can be called from your components)
 // and actions (side effects that can be performed by your components).
 
-import { HydraCarouselSchema, HydraTextSchema, HydraFormSchema, HydraProfileSchema, HydraFeedbackSchema, HydraRecentTweetsSchema } from "@/model/hydra"
+import {
+  HydraCarouselSchema,
+  HydraFeedbackSchema,
+  HydraFormSchema,
+  HydraProfileSchema,
+  HydraRecentTweetsSchema,
+  HydraTextSchema,
+} from "@/model/hydra"
+import {
+  getAllUserProfilesFn,
+  getProfileDataForUserFn,
+  getTwitterDataFn,
+} from "@/tinkerer.service"
 import { queryPineconeForDocuments } from "@/yc.service"
 import { HydraClient } from "hydra-ai"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import { HydraCarousel } from "@/components/hydra/carousel"
-import { HydraText } from "@/components/hydra/text"
+import { Feedback } from "@/components/hydra/feedback"
 import { HydraForm } from "@/components/hydra/form"
 import { Profile } from "@/components/hydra/profile"
-import { Feedback } from "@/components/hydra/feedback"
 import { RecentTweets } from "@/components/hydra/recentTweets"
-import { getProfileDataForUserFn, getAllUserProfilesFn, getTwitterDataFn } from "@/tinkerer.service"
+import { HydraText } from "@/components/hydra/text"
 
 export const getHydraClient = (): HydraClient => {
   const hydra = new HydraClient()
@@ -29,9 +40,8 @@ const getProfileDataForUser = {
       {
         name: "email",
         type: "string",
-        description:
-          "Email of the user whose profile is being queried",
-          isRequired: true,
+        description: "Email of the user whose profile is being queried",
+        isRequired: true,
       },
     ],
   },
@@ -91,12 +101,12 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
       }
     ),
     //hydra.registerComponent(
-      //"Profile",
-      //"A profile component for displaying user information including name, avatar, social media links, and compatibility score.",
-      //Profile,
-      //{
-        //Profile: zodToJsonSchema(HydraProfileSchema),
-      //}
+    //"Profile",
+    //"A profile component for displaying user information including name, avatar, social media links, and compatibility score.",
+    //Profile,
+    //{
+    //Profile: zodToJsonSchema(HydraProfileSchema),
+    //}
     //),
     hydra.registerComponent(
       "Feedback",
