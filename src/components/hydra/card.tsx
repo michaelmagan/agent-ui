@@ -49,13 +49,21 @@ export const HydraCard: React.FC<HydraCardProps> = ({
         <div>{content}</div>
       </CardContent>
       {buttons && buttons.length > 0 && (
-        <div className="flex justify-end gap-2 p-4">
-          {buttons.map((button, index) => (
-            <HydraButton key={index} {...button} className="w-full sm:w-auto" />
-          ))}
-        </div>
+        <>
+          <h3 className="px-6 text-md font-semibold">Social Links</h3>
+          <div className="flex justify-start gap-2 p-4 pt-2">
+            {buttons.map((button, index) => (
+              <HydraButton key={index} {...button} className="w-auto pl-2 underline text-green" />
+            ))}
+          </div>
+        </>
       )}
-      {footer && <CardFooter>{footer}</CardFooter>}
+      {footer && (
+        <>
+          <h3 className="px-6 text-md mb-4 font-semibold">Additional Information</h3>
+          <CardFooter>{footer}</CardFooter>
+        </>
+      )}
     </Card>
   )
 }

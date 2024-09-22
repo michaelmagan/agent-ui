@@ -14,8 +14,22 @@ export const HydraCarousel: React.FC<HydraCarouselType> = ({
   cards,
   className,
 }) => {
+  if (cards.length <= 2) {
+    return (
+      <div className="mx-auto w-full max-w-6xl mt-4">
+        <div className="flex flex-row space-x-4">
+          {cards.map((card, index) => (
+            <div key={index} className="flex-1">
+              <HydraCard {...card} className="h-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="mx-auto w-full max-w-6xl">
+    <div className="mx-auto w-full max-w-6xl mt-4">
       <Carousel className={className}>
         <CarouselContent>
           {cards.map((card, index) => (
