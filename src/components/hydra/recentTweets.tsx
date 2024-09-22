@@ -37,7 +37,7 @@ export const RecentTweets: React.FC<RecentTweetsProps> = ({ tweets }) => {
             </Avatar>
             <div className="w-full">
               <CardTitle className="text-sm font-medium">{tweet.author.name}</CardTitle>
-              <p className="text-sm text-gray-500">@{tweet.author.handle}</p>
+              <p className="text-sm text-gray-500">{tweet.author.handle}</p>
             </div>
           </CardHeader>
           <CardContent>
