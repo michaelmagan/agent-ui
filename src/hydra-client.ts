@@ -90,14 +90,14 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
         HydraForm: zodToJsonSchema(HydraFormSchema),
       }
     ),
-    hydra.registerComponent(
-      "Profile",
-      "A profile component for displaying user information including name, avatar, social media links, and compatibility score.",
-      Profile,
-      {
-        Profile: zodToJsonSchema(HydraProfileSchema),
-      }
-    ),
+    //hydra.registerComponent(
+      //"Profile",
+      //"A profile component for displaying user information including name, avatar, social media links, and compatibility score.",
+      //Profile,
+      //{
+        //Profile: zodToJsonSchema(HydraProfileSchema),
+      //}
+    //),
     hydra.registerComponent(
       "Feedback",
       "A feedback component for collecting user feedback with thumbs up and thumbs down buttons.",
