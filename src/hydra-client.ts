@@ -22,9 +22,9 @@ import { zodToJsonSchema } from "zod-to-json-schema"
 import { HydraCarousel } from "@/components/hydra/carousel"
 import { Feedback } from "@/components/hydra/feedback"
 import { HydraForm } from "@/components/hydra/form"
+import { HydraQueryConstructor } from "@/components/hydra/query-constructor"
 import { RecentTweets } from "@/components/hydra/recentTweets"
 import { HydraText } from "@/components/hydra/text"
-import { HydraQueryConstructor } from "@/components/hydra/query-constructor"
 
 export const getHydraClient = (): HydraClient => {
   const hydra = new HydraClient()
@@ -93,12 +93,12 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
       }
     ),
     //hydra.registerComponent(
-      //"HydraForm",
-      //"A form component for creating and submitting user input. The form can have multiple fields of various types, and a submit button. Each field should have a unique 'id', 'label', and 'type'. The form handles submission and passes the data to the provided onSubmit function.",
-      //HydraForm,
-      //{
-        //HydraForm: zodToJsonSchema(HydraFormSchema),
-      //}
+    //"HydraForm",
+    //"A form component for creating and submitting user input. The form can have multiple fields of various types, and a submit button. Each field should have a unique 'id', 'label', and 'type'. The form handles submission and passes the data to the provided onSubmit function.",
+    //HydraForm,
+    //{
+    //HydraForm: zodToJsonSchema(HydraFormSchema),
+    //}
     //),
     //hydra.registerComponent(
     //"Profile",
@@ -145,44 +145,7 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
     ),
     */
       "HydraQueryConstructor",
-      `Based on a user's query, generate a form with 5 to 6 follow-up questions to better understand the user's request. Follow these guidelines:
-
-Use the questions as labels for form fields.
-For each question, choose an appropriate input type:
-
-Use dropdown menus for single selections from multiple options.
-Use checkboxes for multiple-choice questions where more than one option can be selected.
-Use radio buttons for questions with mutually exclusive options (either/or choices).
-
-
-Ensure at least one question uses checkboxes for multiple select data.
-Use radio buttons only for binary choices or mutually exclusive options.
-Provide a diverse range of input types across the form.
-For open-ended questions, use text input fields.
-
-Example structure:
-[Dropdown] Industry selection
-[Checkboxes] Skills needed (multiple selection allowed)
-[Radio buttons] Experience level (single selection)
-[Text input] Specific location (if applicable)
-[Dropdown] Commitment level expected
-Always include options or placeholder text for each input type to demonstrate how it should be used. When generating the form, pay special attention to the question about skills for a co--founder. For this question:
-
-Use checkboxes to allow multiple skill selections.
-Provide at least 5-7 common skills as options.
-Include an 'Other' option with a text input field.
-
-Example format for the skills question:
-What skills are you looking for in a co-founder? (Select all that apply)
-[ ] Technical/Programming
-[ ] Business Development
-[ ] Marketing
-[ ] Finance/Accounting
-[ ] Product Management
-[ ] Design/UX
-[ ] Sales
-[ ] Other: [Text input field]
-Ensure that each checkbox is properly labeled and that multiple selections are possible.`,
+      `Based on a user's query, generate a form with 5 to 6 follow-up questions to better understand the user's request. Follow these guidelines: Use the questions as labels for form fields. For each question, choose an appropriate input type: Use dropdown menus for single selections from multiple options. Use checkboxes for multiple-choice questions where more than one option can be selected. Use radio buttons for questions with mutually exclusive options (either/or choices). Ensure at least one question uses checkboxes for multiple select data. Use radio buttons only for binary choices or mutually exclusive options. Provide a diverse range of input types across the form. For open-ended questions, use text input fields. Example structure: [Dropdown] Industry selection [Checkboxes] Skills needed (multiple selection allowed) [Radio buttons] Experience level (single selection) [Text input] Specific location (if applicable) [Dropdown] Commitment level expected Always include options or placeholder text for each input type to demonstrate how it should be used. When generating the form, pay special attention to the question about skills for a co--founder. For this question: Use checkboxes to allow multiple skill selections. Provide at least 5-7 common skills as options. Include an 'Other' option with a text input field. Example format for the skills question: What skills are you looking for in a co-founder? (Select all that apply) [ ] Technical/Programming [ ] Business Development [ ] Marketing [ ] Finance/Accounting [ ] Product Management [ ] Design/UX [ ] Sales [ ] Other: [Text input field] Ensure that each checkbox is properly labeled and that multiple selections are possible. Pre-check or select options based on profile.`,
       HydraQueryConstructor,
       {
         HydraQueryConstructor: zodToJsonSchema(HydraFormSchema),
