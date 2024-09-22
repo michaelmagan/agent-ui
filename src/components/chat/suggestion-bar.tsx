@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { motion } from "framer-motion"
+import { create } from "zustand"
 
 import { Button } from "@/components/ui/button"
 import { useChatInputStore } from "@/components/chat/input"
@@ -9,36 +10,51 @@ interface Suggestion {
   query: string
 }
 
+interface SuggestionBarState {
+  randomSuggestions: Suggestion[]
+  isLoading: boolean
+  setRandomSuggestions: (suggestions: Suggestion[]) => void
+  setIsLoading: (isLoading: boolean) => void
+}
+
+export const useSuggestionBarStore = create<SuggestionBarState>((set) => ({
+  randomSuggestions: [],
+  isLoading: true,
+  setRandomSuggestions: (suggestions) =>
+    set({ randomSuggestions: suggestions }),
+  setIsLoading: (isLoading) => set({ isLoading }),
+}))
+
 export function SuggestionBar() {
   const { setMessage, inputRef } = useChatInputStore()
-  const [randomSuggestions, setRandomSuggestions] = useState<Suggestion[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const { randomSuggestions, isLoading, setRandomSuggestions, setIsLoading } =
+    useSuggestionBarStore()
+
   // Suggestions for finding your ideal coworker
   const allSuggestions: Suggestion[] = [
     {
-      title: "Technical expertise",
-      query: "Find a coworker with expertise in React and TypeScript.",
+      title: "Find a co-founder",
+      query: "Find a co-founder with complementary skills to my profile.",
     },
     {
-      title: "Perfect match for my skills",
-      query: "I'm looking for a co-founder. Can you help me find someone with complementary skills as me?",
+      title: "Find a teammate",
+      query: "Find a teammate with complementary skills to my profile.",
     },
     {
-      title: "Innovative problem-solver",
-      query: "Search for a coworker who excels at creative problem-solving.",
+      title: "Find a mentor",
+      query: "Find a mentor with complementary skills to my profile.",
     },
     {
-      title: "Continuous learner",
-      query: "Find someone who is eager to learn and grow professionally.",
-    },
-    {
-      title: "Diligent professional",
-      query: "Look for a coworker with a strong work ethic and attention to detail.",
+      title: "Find a friend",
+      query: "Find a friend with complementary skills to my profile.",
     },
   ]
 
   const outlineVariants = [
-    'outline277DA1', 'outline4D908E', 'outline90BE6D', 'outlineF8961E'
+    "outline277DA1",
+    "outline4D908E",
+    "outline90BE6D",
+    "outlineF8961E",
   ] as const
 
   useEffect(() => {
@@ -50,8 +66,7 @@ export function SuggestionBar() {
     setIsLoading(true)
     setRandomSuggestions(getRandomSuggestions())
     setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [setIsLoading, setRandomSuggestions])
 
   const handleSuggestionClick = (suggestion: string) => {
     setMessage(suggestion)
@@ -66,7 +81,7 @@ export function SuggestionBar() {
 
   if (isLoading) {
     return (
-      <div className="z-10 mx-auto w-full flex flex-col items-start gap-4 px-2 py-4 max-w-screen-8xl">
+      <div className="max-w-screen-8xl z-10 mx-auto flex w-full flex-col items-start gap-4 px-2 py-4">
         <Button variant="ghost" className="animate-pulse">
           Generating suggested actions...
         </Button>
@@ -74,9 +89,13 @@ export function SuggestionBar() {
     )
   }
 
+  if (randomSuggestions.length === 0) {
+    return null
+  }
+
   return (
-    <div className="z-10 mx-auto w-full flex flex-col items-center gap-4 px-2 py-4 max-w-screen-8xl">
-      <div className="w-full flex items-center gap-4 overflow-x-auto">
+    <div className="max-w-screen-8xl z-10 mx-auto flex w-full flex-col items-center gap-4 px-2 py-4">
+      <div className="flex w-full items-center gap-4 overflow-x-auto">
         {randomSuggestions.map((suggestion, index) => (
           <motion.div
             key={index}

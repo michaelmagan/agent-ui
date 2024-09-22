@@ -7,7 +7,7 @@ import { create } from "zustand"
 import { ScrollArea } from "../ui/scroll-area"
 import { Chat } from "./chat"
 import { ChatInput } from "./input"
-import { SuggestionBar } from "./suggestion-bar"
+import { SuggestionBar, useSuggestionBarStore } from "./suggestion-bar"
 
 export interface ChatMessage {
   sender: "bot" | "user"
@@ -20,14 +20,20 @@ const componentFlow = [
     name: "Feedback",
     description:
       "Ask the user questions to clarify their query for teamates, co-founders, or friends.",
+    title: "Find matching founders",
+    query: "Show me potential co-founders based on my clarified needs.",
   },
   {
     name: "HydraCarousel",
     description: "Query for founders that match their Feedback.",
+    title: "Check recent tweets",
+    query: "Can you show me recent tweets from the co-founder I selected?",
   },
   {
     name: "RecentTweets",
     description: "Show the user recent tweets for the person they selected.",
+    title: "Reach out",
+    query: "Help me draft a message to send to this potential co-founder.",
   },
   {
     name: "HydraText",
@@ -94,6 +100,9 @@ export default function ChatBox() {
     setAgentThinking(true)
     try {
       const nextComponent = getNextComponentFlow()
+      const { setRandomSuggestions } = useSuggestionBarStore.getState()
+      setRandomSuggestions([nextComponent])
+
       // This is just a hack to get the hydra client to generate the next component in the flow
       const messageWithComponent =
         message + nextComponent.name + nextComponent.description
