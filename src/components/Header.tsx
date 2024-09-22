@@ -1,9 +1,21 @@
-import { FunctionComponent } from "react"
+"use client"
+import { FunctionComponent, useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 import { Header as HeaderClient } from "./Header-Client"
 import { UsersIcon } from "lucide-react"
 
 export const Header: FunctionComponent = () => {
+  const [currentWord, setCurrentWord] = useState(0)
+  const words = ["co-founder", "friend", "mentor", "teammate"]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWord((prev) => (prev + 1) % words.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <header className="fixed left-0 right-0 top-0 z-10 mx-4 my-4 space-y-4 bg-background">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
@@ -25,7 +37,18 @@ export const Header: FunctionComponent = () => {
                 <span style={{color: "#F3722C"}}>r</span>
               </h1>
               <p className="text-xs text-gray-600 dark:text-gray-400 md:text-sm">
-                Find your ideal co-founder
+                Find your ideal{" "}
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {words[currentWord]}
+                  </motion.span>
+                </AnimatePresence>
               </p>
             </div>
           </div>
