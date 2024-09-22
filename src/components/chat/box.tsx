@@ -15,13 +15,12 @@ export interface ChatMessage {
   component?: ReactElement
 }
 
-// update this to be more "agentic"
-// the agent is going to kick off a thing so there needs to be a state for when the agent is thinking
-// then the agent will ask for input
 interface ChatState {
   messages: ChatMessage[]
   addMessage: (message: ChatMessage) => void
   clearMessages: () => void
+  isAgentThinking: boolean
+  setAgentThinking: (isThinking: boolean) => void
 }
 
 export const useChatStore = create<ChatState>((set) => ({
@@ -29,11 +28,12 @@ export const useChatStore = create<ChatState>((set) => ({
   addMessage: (message) =>
     set((state) => ({ messages: [...state.messages, message] })),
   clearMessages: () => set({ messages: [] }),
+  isAgentThinking: false,
+  setAgentThinking: (isThinking) => set({ isAgentThinking: isThinking }),
 }))
 
 export default function ChatBox() {
-  const { messages, addMessage } = useChatStore()
-  const [isLoading, setIsLoading] = useState(false)
+  const { messages, addMessage, isAgentThinking, setAgentThinking } = useChatStore()
   const [isHydraReady, setIsHydraReady] = useState(false)
   const [isRegistering, setIsRegistering] = useState(false)
 
@@ -61,10 +61,10 @@ export default function ChatBox() {
   }
 
   const fetchResponse = async (message: string) => {
-    setIsLoading(true)
+    setAgentThinking(true)
     try {
       const response = await hydra.generateComponent(message)
-      console.log("Hydra client result:", response) // Added console log
+      console.log("Hydra client result:", response)
       if (
         typeof response === "object" &&
         response.component &&
@@ -94,7 +94,7 @@ export default function ChatBox() {
         message: "Sorry, I encountered an error while processing your request.",
       })
     } finally {
-      setIsLoading(false)
+      setAgentThinking(false)
     }
   }
 
@@ -102,11 +102,11 @@ export default function ChatBox() {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <ScrollArea className="mt-[6rem] h-[calc(100vh-4rem)] w-full">
-          <Chat messages={messages} isLoading={isLoading} />
+          <Chat messages={messages} isLoading={isAgentThinking} />
         </ScrollArea>
       </Suspense>
       <SuggestionBar />
-      <ChatInput onSendMessage={handleSendMessage} />
+      <ChatInput onSendMessage={handleSendMessage} disabled={isAgentThinking} />
     </>
   )
 }

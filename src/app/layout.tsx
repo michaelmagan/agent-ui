@@ -1,15 +1,18 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { CopilotKit } from "@copilotkit/react-core"
-
+import { Poppins } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
 import { Header } from "@/components/Header"
 import { ThemeProvider } from "@/components/theme-provider"
-
 import "@/styles/globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Co-Finder - A Demo App Built on Agent UI",
@@ -28,9 +31,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <head />
-      <body className={cn("h-full bg-background font-sans antialiased")}>
+    <html lang="en" className={`h-full ${poppins.variable}`} suppressHydrationWarning>
+      <body className={cn("h-full bg-background antialiased", poppins.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

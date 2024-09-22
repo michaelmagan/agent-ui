@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* hack prevent error from bubbling up into the UI
+ * Error: Uncaught (in promise) Error: A component with name: HydraCarousel is already registered. Try another name. error
+ */
+nextjs-portal {
+  display: none;
+}
+
+@layer base {
+  :root {
+    --font-sans: var(--font-poppins);
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
