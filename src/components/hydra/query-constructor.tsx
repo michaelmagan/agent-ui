@@ -123,7 +123,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
                     <Checkbox
                       id={`${field.id}-${option.value}`}
                       checked={(formData[field.id] as string[])?.includes(option.value)}
-                      onCheckedChange={(checked) =>
+                      onCheckedChange={(checked: boolean) =>
                         handleCheckboxChange(field.id, option.value, checked as boolean)
                       }
                       className={`${field.className} mb-0`}
@@ -157,7 +157,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
             ) : field.type === "radio-group" ? (
               <RadioGroup
                 value={formData[field.id] as string}
-                onValueChange={(value) => handleInputChange(field.id, value)}
+                onValueChange={(value: string) => handleInputChange(field.id, value)}
               >
                 {field.options && field.options.map((option, optionIndex) => (
                   <div key={optionIndex} className="flex items-center space-x-2">

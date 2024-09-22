@@ -8,6 +8,7 @@ import { ScrollArea } from "../ui/scroll-area"
 import { Chat } from "./chat"
 import { ChatInput } from "./input"
 import { SuggestionBar, useSuggestionBarStore } from "./suggestion-bar"
+import { useChatInputStore } from "./input"
 
 export interface ChatMessage {
   sender: "bot" | "user"
@@ -25,13 +26,13 @@ const componentFlow = [
     name: "HydraCarousel",
     description: "Query for founders that match their Feedback.",
     title: "Check recent tweets",
-    query: "Can you show me recent tweets from the co-founder I selected?",
+    query: "Can you show me recent tweets from {selectedCofounder}?",
   },
   {
     name: "RecentTweets",
     description: "Show the user recent tweets for the person they selected.",
     title: "Reach out",
-    query: "Help me draft a message to send to this potential co-founder.",
+    query: "Help me draft a message to send to {selectedCofounder}.",
   },
   {
     name: "HydraText",
@@ -54,6 +55,8 @@ interface ChatState {
   clearMessages: () => void
   isAgentThinking: boolean
   setAgentThinking: (isThinking: boolean) => void
+  selectedCofounder: string | null
+  setSelectedCofounder: (cofounder: string | null) => void
 }
 
 export const useChatStore = create<ChatState>((set) => ({
@@ -63,10 +66,12 @@ export const useChatStore = create<ChatState>((set) => ({
   clearMessages: () => set({ messages: [] }),
   isAgentThinking: false,
   setAgentThinking: (isThinking) => set({ isAgentThinking: isThinking }),
+  selectedCofounder: null,
+  setSelectedCofounder: (cofounder) => set({ selectedCofounder: cofounder }),
 }))
 
 export default function ChatBox() {
-  const { messages, addMessage, isAgentThinking, setAgentThinking } =
+  const { messages, addMessage, isAgentThinking, setAgentThinking, selectedCofounder, setSelectedCofounder } =
     useChatStore()
   const [isHydraReady, setIsHydraReady] = useState(false)
   const [isRegistering, setIsRegistering] = useState(false)
@@ -135,7 +140,7 @@ export default function ChatBox() {
           ? [
               {
                 title: nextComponent.title,
-                query: nextComponent.query,
+                query: nextComponent.query.replace("{selectedCofounder}", selectedCofounder || "the selected co-founder"),
               },
             ]
           : []

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { HydraCarousel as HydraCarouselType } from "@/model/hydra"
 
 import {
@@ -14,12 +14,6 @@ export const HydraCarousel: React.FC<HydraCarouselType> = ({
   cards,
   className,
 }) => {
-  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null)
-
-  const handleCardClick = (index: number) => {
-    setSelectedCardIndex(prevIndex => prevIndex === index ? null : index)
-  }
-
   if (cards.length <= 2) {
     return (
       <div className="mx-auto w-full max-w-6xl mt-4">
@@ -27,12 +21,11 @@ export const HydraCarousel: React.FC<HydraCarouselType> = ({
           {cards.map((card, index) => (
             <div 
               key={index} 
-              className="flex-1 cursor-pointer"
-              onClick={() => handleCardClick(index)}
+              className="flex-1"
             >
               <HydraCard 
                 {...card} 
-                className={`h-full ${selectedCardIndex === index ? 'outline outline-2 outline-green-500' : ''}`} 
+                className="h-full"
               />
             </div>
           ))}
@@ -48,13 +41,12 @@ export const HydraCarousel: React.FC<HydraCarouselType> = ({
           {cards.map((card, index) => (
             <CarouselItem 
               key={index} 
-              className="sm:basis-2/3 md:basis-1/2 cursor-pointer"
-              onClick={() => handleCardClick(index)}
+              className="sm:basis-2/3 md:basis-1/2"
             >
               <div className="p-1 h-full">
                 <HydraCard 
                   {...card} 
-                  className={`h-full ${selectedCardIndex === index ? 'outline outline-2 outline-green-500' : ''}`} 
+                  className="h-full"
                 />
               </div>
             </CarouselItem>

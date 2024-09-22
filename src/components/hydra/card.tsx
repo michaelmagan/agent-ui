@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { HydraCard as HydraCardType } from "@/model/hydra"
+import { useChatStore } from "@/components/chat/box"
+import { useChatInputStore } from "@/components/chat/input"
 
 import { Badge } from "@/components/ui/badge"
 import {
@@ -13,9 +15,7 @@ import {
 
 import { HydraButton } from "./button"
 
-type HydraCardProps = HydraCardType
-
-export const HydraCard: React.FC<HydraCardProps> = ({
+export const HydraCard: React.FC<HydraCardType> = ({
   title,
   description,
   header,
@@ -25,8 +25,23 @@ export const HydraCard: React.FC<HydraCardProps> = ({
   footer,
   className,
 }) => {
+  const { setSelectedCofounder } = useChatStore()
+  const { setMessage } = useChatInputStore()
+  const [isHighlighted, setIsHighlighted] = useState(false)
+
+  const handleClick = () => {
+    if (title) {
+      setSelectedCofounder(title)
+      setMessage(`Tell me more about ${title}`)
+      setIsHighlighted(true)
+    }
+  }
+
   return (
-    <Card className={className}>
+    <Card 
+      className={`${className} cursor-pointer ${isHighlighted ? 'bg-green-100 dark:bg-green-900' : ''}`}
+      onClick={handleClick}
+    >
       <CardHeader>
         {title && <CardTitle>{title}</CardTitle>}
         {description && <CardDescription>{description}</CardDescription>}
