@@ -33,7 +33,7 @@ const tweets: Tweet[] = tweetsData
   })
   .flat() // Flatten the array
 
-console.log("tweets", tweets[0])
+// console.log("tweets", tweets)
 
 const people: Person[] = [
   {
@@ -43,9 +43,9 @@ const people: Person[] = [
     company_name: "AI-Tinkerers",
     title: "Founder",
     email: "heitzeberg@example.com",
-    linkedin_url: "https://www.linkedin.com/in/heitzeberg",
+    linkedin_url: "https://www.linkedin.com/in/joeheitzeberg",
     twitter_handle: "@jheitzeb",
-    github_url: "https://github.com/heitzeberg",
+    github_url: "https://github.com/jheitzeb",
     employment: "Employed",
     education:
       "MBA at MIT and B.S. in Computer Science at UW, also studied Technical Japanese at UW",
