@@ -108,7 +108,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
                       onCheckedChange={(checked) =>
                         handleCheckboxChange(field.id, option.value, checked as boolean)
                       }
-                      className={field.className}
+                      className={`${field.className} mb-0`}
                     />
                     <label
                       htmlFor={`${field.id}-${option.value}`}
