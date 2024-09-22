@@ -22,9 +22,9 @@ import { zodToJsonSchema } from "zod-to-json-schema"
 import { HydraCarousel } from "@/components/hydra/carousel"
 import { Feedback } from "@/components/hydra/feedback"
 import { HydraForm } from "@/components/hydra/form"
-import { Profile } from "@/components/hydra/profile"
 import { RecentTweets } from "@/components/hydra/recentTweets"
 import { HydraText } from "@/components/hydra/text"
+import { HydraQueryConstructor } from "@/components/hydra/query-constructor"
 
 export const getHydraClient = (): HydraClient => {
   const hydra = new HydraClient()
@@ -124,6 +124,32 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
         RecentTweets: zodToJsonSchema(HydraRecentTweetsSchema),
       },
       [getTwitterPostsTool]
+    ),
+    hydra.registerComponent(
+      /*
+      "HydraCarousel",
+      "A carousel of cards component for displaying multiple cards in a carousel format. Each card should include as many relevant links as possible, represented as buttons. These links should be derived from the content and context of each card, providing comprehensive navigation options for users. Ensure that every potential action or related information has a corresponding button link.",
+      HydraCarousel,
+      {
+        HydraCarousel: zodToJsonSchema(HydraCarouselSchema),
+      },
+      [getYCDataTool]
+    ),
+    hydra.registerComponent(
+      "HydraText",
+      "A text component for creating and generating text content. Generate text based on the context and the user's query. Each field should have a unique 'id' that corresponds to the data it represents. The 'share' property allows defining multiple sharing options, each with a custom URL template. In the URL template, use {fieldId} placeholders to insert field values when sharing.",
+      HydraText,
+      {
+        HydraText: zodToJsonSchema(HydraTextSchema),
+      }
+    ),
+    */
+      "HydraQueryConstructor",
+      "Based on a users query, ask 5 to 6 follow up questions to better understand the user's query. Make the questions the label. Use a mix of multi-select, inputs with suggestions, and  check boxes.",
+      HydraQueryConstructor,
+      {
+        HydraQueryConstructor: zodToJsonSchema(HydraFormSchema),
+      }
     ),
   ])
 }
