@@ -116,13 +116,13 @@ const people: Person[] = [
   }
 ];
 
-export async function getProfileDataForUser(
-  email: string,
-): string {
+export async function getProfileDataForUserFn(
+  email: string
+): Promise<Person | undefined> {
   // Return data for requested user
   return people.find(person => person.email.toLowerCase() === email.toLowerCase());
 }
 
-export async function getAllUserProfiles(): string {
-  return people
+export async function getAllUserProfilesFn(): Promise<Person[]> {
+  return people;
 }

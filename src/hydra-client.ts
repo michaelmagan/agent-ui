@@ -13,6 +13,7 @@ import { HydraForm } from "@/components/hydra/form"
 import { Profile } from "@/components/hydra/profile"
 import { Feedback } from "@/components/hydra/feedback"
 import { RecentTweets } from "@/components/hydra/recentTweets"
+import { getProfileDataForUserFn, getAllUserProfilesFn } from "@/tinkerer.service"
 
 export const getHydraClient = (): HydraClient => {
   const hydra = new HydraClient()
@@ -37,7 +38,7 @@ const getYCDataTool = {
 }
 
 const getProfileDataForUser = {
-  getComponentContext: getProfileDataForUser,
+  getComponentContext: getProfileDataForUserFn,
   definition: {
     name: "getProfileDataForUser",
     description: "Get user profile data from username",
@@ -54,7 +55,7 @@ const getProfileDataForUser = {
 }
 
 const getAllUserProfiles = {
-  getComponentContext: getAllUserProfiles,
+  getComponentContext: getAllUserProfilesFn,
   definition: {
     name: "getAllUserProfiles",
     description: "Get all user profiles",
