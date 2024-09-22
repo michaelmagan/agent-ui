@@ -18,6 +18,11 @@ interface Person {
   twitter_roast: string;
 }
 
+interface Tweet {
+  handle: string;
+  tweet: string;
+}
+
 const people: Person[] = [
   {
     id: 1,
@@ -116,6 +121,29 @@ const people: Person[] = [
   }
 ];
 
+const tweets: Tweet[] = [
+  {
+    handle: "@joeheitzeberg",
+    tweet: "I am the founder of AI-Tinkerers and I am a big fan of AI."
+  },
+  {
+    handle: "@aaron__vi",
+    tweet: "I am the founder of BoundaryML and I am a big fan of AI."
+  },
+  {
+    handle: "@dexhorthy",
+    tweet: "I am the founder of HumanLayer and I am a big fan of AI."
+  },
+  {
+    handle: "@adamburgh",
+    tweet: "I am the founder of Alexandria AI and I am a big fan of AI."
+  },
+  {
+    handle: "@jacob-harbich",
+    tweet: "I am the solution architect at DigitalOcean and I am a big fan of AI."
+  }
+];
+  
 export async function getProfileDataForUserFn(
   email: string
 ): Promise<Person | undefined> {
@@ -125,4 +153,8 @@ export async function getProfileDataForUserFn(
 
 export async function getAllUserProfilesFn(): Promise<Person[]> {
   return people;
+}
+
+export async function getTwitterDataFn(twitterHandle: string): Promise<Tweet[] | undefined> {
+  return tweets.filter(tweet => tweet.handle === twitterHandle);
 }

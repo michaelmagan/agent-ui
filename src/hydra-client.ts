@@ -13,28 +13,11 @@ import { HydraForm } from "@/components/hydra/form"
 import { Profile } from "@/components/hydra/profile"
 import { Feedback } from "@/components/hydra/feedback"
 import { RecentTweets } from "@/components/hydra/recentTweets"
-import { getProfileDataForUserFn, getAllUserProfilesFn } from "@/tinkerer.service"
+import { getProfileDataForUserFn, getAllUserProfilesFn, getTwitterDataFn } from "@/tinkerer.service"
 
 export const getHydraClient = (): HydraClient => {
   const hydra = new HydraClient()
   return hydra
-}
-
-const getYCDataTool = {
-  getComponentContext: queryPineconeForDocuments,
-  definition: {
-    name: "getYCData",
-    description: "Get relevant YC data based on the given query.",
-    parameters: [
-      {
-        name: "query",
-        type: "string",
-        description:
-          "The search query for YC data. It is crucial that the query is extremely detailed and comprehensive, including every aspect the user has asked for. The query MUST be a long, elaborate string containing at least 20-30 words to ensure all user requirements are captured. Shorter queries will not provide sufficient context for accurate results.",
-        isRequired: true,
-      },
-    ],
-  },
 }
 
 const getProfileDataForUser = {
@@ -49,21 +32,22 @@ const getProfileDataForUser = {
         description:
           "Email of the user whose profile is being queried",
           isRequired: true,
-        },
-      ],
-    },
-  }
-const getTwitterDataTool = {
-  getComponentContext: queryForTwitterData,
+      },
+    ],
+  },
+}
+
+const getTwitterPostsTool = {
+  getComponentContext: getTwitterDataFn,
   definition: {
     name: "getTwitterData",
     description: "Get relevant Twitter data based on the given query.",
     parameters: [
       {
-        name: "query",
+        name: "twitterHandle",
         type: "string",
         description:
-          "The search query for Twitter data. It is crucial that the query is extremely detailed and comprehensive, including every aspect the user has asked for. The query MUST be a long, elaborate string containing at least 20-30 words to ensure all user requirements are captured. Shorter queries will not provide sufficient context for accurate results.",
+          "The Twitter handle of the user whose tweets are being queried. The tool should return recent tweets for the given user.",
         isRequired: true,
       },
     ],
@@ -128,7 +112,8 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
       RecentTweets,
       {
         RecentTweets: zodToJsonSchema(HydraRecentTweetsSchema),
-      }
+      },
+      [getTwitterPostsTool]
     ),
   ])
 }
