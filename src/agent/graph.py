@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 from typing import Annotated, Literal, TypedDict
 
 from langchain_core.messages import HumanMessage
@@ -6,7 +9,34 @@ from langchain_core.tools import tool
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph, MessagesState
 from langgraph.prebuilt import ToolNode
+from sqlalchemy import URL, create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
 
+# Load environment variables from .env file
+load_dotenv()
+
+connection_string = URL.create(
+    'postgresql',
+    username=os.getenv('DB_USERNAME'),
+    password=os.getenv('DB_PASSWORD'),
+    host=os.getenv('DB_HOST'),
+    database=os.getenv('DB_NAME')
+)
+
+engine = create_engine(connection_string)
+
+# Test the connection
+try:
+    with engine.connect() as connection:
+        result = connection.execute(text("SELECT 1"))
+        print("Connection successful!")
+except SQLAlchemyError as e:
+    print(f"Error connecting to the database: {e}")
+
+def run_query(query):
+    with engine.connect() as connection:
+        result = connection.execute(text(query))
+        return result.fetchall()
 
 # Define the tools for the agent to use
 @tool
@@ -17,8 +47,16 @@ def search(query: str):
         return "It's 60 degrees and foggy."
     return "It's 90 degrees and sunny."
 
+@tool
+def query_database(query: str):
+    """Run a SQL query on the database."""
+    try:
+        results = run_query(query)
+        return str(results)  # Convert results to string for simplicity
+    except Exception as e:
+        return f"Error executing query: {str(e)}"
 
-tools = [search]
+tools = [search, query_database]
 
 tool_node = ToolNode(tools)
 
@@ -75,3 +113,44 @@ checkpointer = MemorySaver()
 # meaning you can use it as you would any other runnable.
 # Note that we're (optionally) passing the memory when compiling the graph
 graph = workflow.compile(checkpointer=checkpointer)
+
+# Add this new function to demonstrate querying the database
+def example_query():
+    # query = "SELECT * FROM profiles LIMIT 5"
+
+    # # Execute the query
+    # try:
+    #     with engine.connect() as connection:
+    #         result = connection.execute(text(query))
+    #         rows = result.fetchall()
+    #         if rows:
+    #             for row in rows:
+    #                 print(row)
+    #         else:
+    #             print("No results returned. The table might be empty or there might be a permissions issue.")
+    # except SQLAlchemyError as e:
+    #     print(f"Error executing query: {e}")
+
+    # # Additional diagnostic query
+    # try:
+    #     with engine.connect() as connection:
+    #         result = connection.execute(text("SELECT COUNT(*) FROM profiles"))
+    #         count = result.scalar()
+    #         print(f"Number of records in profile table: {count}")
+    # except SQLAlchemyError as e:
+    #     print(f"Error counting records: {e}")
+
+    # Add this query to list all tables
+    try:
+        with engine.connect() as connection:
+            result = connection.execute(text("""
+                SELECT 3
+            """))
+            print("Available tables:")
+            for row in result:
+                print(row[0])
+    except SQLAlchemyError as e:
+        print(f"Error listing tables: {e}")
+
+if __name__ == "__main__":
+    example_query()
