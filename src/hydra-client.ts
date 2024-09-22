@@ -48,6 +48,22 @@ const getProfileDataForUser = {
         type: "string",
         description:
           "Email of the user whose profile is being queried",
+          isRequired: true,
+        },
+      ],
+    },
+  }
+const getTwitterDataTool = {
+  getComponentContext: queryForTwitterData,
+  definition: {
+    name: "getTwitterData",
+    description: "Get relevant Twitter data based on the given query.",
+    parameters: [
+      {
+        name: "query",
+        type: "string",
+        description:
+          "The search query for Twitter data. It is crucial that the query is extremely detailed and comprehensive, including every aspect the user has asked for. The query MUST be a long, elaborate string containing at least 20-30 words to ensure all user requirements are captured. Shorter queries will not provide sufficient context for accurate results.",
         isRequired: true,
       },
     ],
