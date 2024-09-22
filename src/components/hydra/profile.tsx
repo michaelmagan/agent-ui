@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { XIcon, Linkedin, ThumbsUp, ThumbsDown, X } from "lucide-react";
+import { Linkedin, ThumbsUp, ThumbsDown, X } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface ProfileProps {
@@ -35,8 +35,8 @@ export const Profile: React.FC<ProfileProps> = ({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Card className={`w-full max-w-sm border-2 ${getFeedbackBorderClass()}`}>
-          <CardHeader className="flex flex-row items-center space-x-4 pb-2">
+        <Card className={`mt-2 w-full max-w-sm border-2 ${getFeedbackBorderClass()}`}>
+          <CardHeader className="flex flex-row items-center space-x-4 pb-2 mb-2">
             <Avatar className="h-12 w-12">
               <AvatarImage src={avatarUrl} alt={name} />
               <AvatarFallback>{name.charAt(0)}</AvatarFallback>
