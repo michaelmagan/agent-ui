@@ -1,12 +1,24 @@
 import React from "react"
-import { useCoAgent } from "@copilotkit/react-core"
+import { useCoAgent, useCopilotChat } from "@copilotkit/react-core"
+import { Role, TextMessage } from "@copilotkit/runtime-client-gql"
 
 import { Button } from "@/components/ui/button"
 
 const Agent: React.FC = () => {
   const { state, setState, start, stop, run, running } = useCoAgent({
-    name: "anthropic_agent",
+    name: "cofinder_agent",
   })
+
+  const { setMessages } = useCopilotChat()
+
+  React.useEffect(() => {
+    setMessages([
+      new TextMessage({
+        content: "what is the weather in sf",
+        role: Role.System,
+      }),
+    ])
+  }, [])
 
   const handleToggleAgent = () => {
     if (running) {

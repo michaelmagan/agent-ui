@@ -1,7 +1,7 @@
 from typing import Annotated, Literal, TypedDict
 
 from langchain_core.messages import HumanMessage
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph, MessagesState
@@ -22,14 +22,15 @@ tools = [search]
 
 tool_node = ToolNode(tools)
 
-model = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0).bind_tools(tools)
+model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0).bind_tools(tools)
 
 # Define the function that determines whether to continue or not
 def should_continue(state: MessagesState) -> Literal["tools", END]:
     messages = state['messages']
     last_message = messages[-1]
+    print(f"Current state in should_continue: {state}")
     # If the LLM makes a tool call, then we route to the "tools" node
-    if last_message.tool_calls:
+    if last_message.additional_kwargs.get('function_call'):
         return "tools"
     # Otherwise, we stop (reply to the user)
     return END
@@ -38,7 +39,9 @@ def should_continue(state: MessagesState) -> Literal["tools", END]:
 # Define the function that calls the model
 def call_model(state: MessagesState):
     messages = state['messages']
+    print(f"Current state before model call: {state}")
     response = model.invoke(messages)
+    print(f"Model response: {response}")
     # We return a list, because this will get added to the existing list
     return {"messages": [response]}
 
@@ -75,3 +78,5 @@ checkpointer = MemorySaver()
 # meaning you can use it as you would any other runnable.
 # Note that we're (optionally) passing the memory when compiling the graph
 graph = workflow.compile(checkpointer=checkpointer)
+
+print("Graph compiled successfully")

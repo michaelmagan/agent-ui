@@ -2,15 +2,16 @@
 
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Add the project root and the src directory to sys.path
 project_root = Path(__file__).resolve().parents[2]
 sys.path.extend([str(project_root), str(project_root / 'src')])
 
-from src.agent.graph import graph
-
-from dotenv import load_dotenv
+# Load environment variables
 load_dotenv()
+
+from src.agent.graph import graph
 
 from fastapi import FastAPI
 import uvicorn
@@ -32,7 +33,7 @@ sdk = CopilotKitSDK(
         LangGraphAgent(
             name="cofinder_agent",
             description="Cofinder agent.",
-            agent=graph,
+            agent=graph
         )
     ],
 )
