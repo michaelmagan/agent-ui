@@ -42,7 +42,7 @@ export const HydraTextInputSchema = z.object({
   id: z.string(),
   label: z.string(),
   text: z.string(),
-  inputType: z.enum(["text", "password", "email", "number"]),
+  inputType: z.enum(["text", "password", "email", "number", "input"]),
   className: z.string().optional(),
 })
 
@@ -75,14 +75,21 @@ export const HydraTextSchema = z.object({
 export const HydraFormFieldSchema = z.object({
   id: z.string(),
   label: z.string(),
-  type: z.enum(["text", "password", "email", "number"]),
+  type: z.enum(["text", "password", "email", "number", "checkbox"]),
   placeholder: z.string().optional(),
   required: z.boolean().optional(),
 })
 
+export const HydraCheckboxSchema = z.object({
+  type: z.literal("checkbox"),
+  id: z.string(),
+  label: z.string(),
+  className: z.string().optional(),
+})
+
 export const HydraFormSchema = z.object({
   title: z.string().optional(),
-  fields: z.array(HydraFormFieldSchema),
+  fields: z.array(z.union([HydraFormFieldSchema, HydraCheckboxSchema])),
   submitButton: z.string(),
   onSubmit: z.function().args(z.record(z.string(), z.string())).returns(z.void()),
   className: z.string().optional(),
@@ -112,6 +119,7 @@ export const HydraRecentTweetsSchema = z.object({
     }),
   })),
 })
+
 
 export type HydraTextInput = z.infer<typeof HydraTextInputSchema>
 export type HydraTextarea = z.infer<typeof HydraTextareaSchema>
