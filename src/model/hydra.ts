@@ -10,6 +10,7 @@ export const HydraButtonSchema = z.object({
   size: z.enum(["default", "sm", "lg", "icon"]).optional(),
   href: z.string(),
   className: z.string().optional(),
+  onClick: z.function().optional(),
 })
 
 export const HydraBadgeSchema = z.object({
@@ -53,6 +54,7 @@ export const HydraTextareaSchema = z.object({
   rows: z.number().optional(),
   className: z.string().optional(),
 })
+
 export const HydraShareSchema = z.object({
   actionLabel: z.string(),
   urlTemplate: z
@@ -70,6 +72,47 @@ export const HydraTextSchema = z.object({
   share: z.array(HydraShareSchema).optional(),
 })
 
+export const HydraFormFieldSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  type: z.enum(["text", "password", "email", "number"]),
+  placeholder: z.string().optional(),
+  required: z.boolean().optional(),
+})
+
+export const HydraFormSchema = z.object({
+  title: z.string().optional(),
+  fields: z.array(HydraFormFieldSchema),
+  submitButton: z.string(),
+  onSubmit: z.function().args(z.record(z.string(), z.string())).returns(z.void()),
+  className: z.string().optional(),
+})
+
+export const HydraProfileSchema = z.object({
+  name: z.string(),
+  avatarUrl: z.string(),
+  xUrl: z.string().optional(),
+  linkedinUrl: z.string().optional(),
+  compatibilityScore: z.number().min(0).max(100),
+})
+
+export const HydraFeedbackSchema = z.object({
+  onFeedback: z.function().args(z.boolean()).returns(z.void()),
+})
+
+export const HydraRecentTweetsSchema = z.object({
+  tweets: z.array(z.object({
+    id: z.string(),
+    content: z.string(),
+    createdAt: z.string(),
+    author: z.object({
+      name: z.string(),
+      handle: z.string(),
+      avatarUrl: z.string(),
+    }),
+  })),
+})
+
 export type HydraTextInput = z.infer<typeof HydraTextInputSchema>
 export type HydraTextarea = z.infer<typeof HydraTextareaSchema>
 export type HydraTextSchemaProps = z.infer<typeof HydraTextSchema>
@@ -78,3 +121,8 @@ export type HydraButton = z.infer<typeof HydraButtonSchema>
 export type HydraBadge = z.infer<typeof HydraBadgeSchema>
 export type HydraCarousel = z.infer<typeof HydraCarouselSchema>
 export type HydraShareSchema = z.infer<typeof HydraShareSchema>
+export type HydraForm = z.infer<typeof HydraFormSchema>
+export type HydraFormField = z.infer<typeof HydraFormFieldSchema>
+export type HydraProfile = z.infer<typeof HydraProfileSchema>
+export type HydraFeedback = z.infer<typeof HydraFeedbackSchema>
+export type HydraRecentTweets = z.infer<typeof HydraRecentTweetsSchema>

@@ -8,6 +8,7 @@ import {
   AutosizeTextAreaRef,
 } from "@/components/ui/auto-resize-textarea"
 import { Button } from "@/components/ui/button"
+import Loader from "@/app/components/loader"
 
 interface ChatInputState {
   message: string
@@ -28,9 +29,10 @@ export const useChatInputStore = create<ChatInputState>((set) => ({
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void
+  disabled?: boolean
 }
 
-export function ChatInput({ onSendMessage }: ChatInputProps) {
+export function ChatInput({ onSendMessage, disabled = false }: ChatInputProps) {
   const [currMaxHeight, setCurrMaxHeight] = useState(0)
   const textareaRef = useRef<AutosizeTextAreaRef>(null)
   const { message, setMessage, setInputRef } = useChatInputStore()
@@ -53,7 +55,7 @@ export function ChatInput({ onSendMessage }: ChatInputProps) {
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !e.shiftKey) {
       e.preventDefault()
-      if (message.trim()) {
+      if (message.trim() && !disabled) {
         handleSendMessage()
       }
     }
@@ -69,9 +71,15 @@ export function ChatInput({ onSendMessage }: ChatInputProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-grow resize-none px-3 py-1"
+          className="flex-grow resize-none px-4 py-4"
+          disabled={disabled}
         />
-        <Button onClick={handleSendMessage} className="h-14">
+        <Button 
+          onClick={handleSendMessage} 
+          className={`h-14 ${disabled ? 'disabled:cursor-not-allowed' : ''}`} 
+          disabled={disabled}
+        >
+          {disabled ? <Loader size={16} className="mr-2" /> : null}
           Send
         </Button>
       </div>
