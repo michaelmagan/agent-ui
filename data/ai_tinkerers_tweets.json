@@ -2,7 +2,7 @@
   {
     "name": "michael magan",
     "tweets": [
-      "Michael Mag\u00e1n2,396 postsSee new postsEdit profileMichael Mag\u00e1n@mrmagan_building the future of ui at @usehydraai",
+      "building the future of ui at @usehydraai",
       "previously sf2, ex-indeed, ex-convoy, ex-taxbitSeattle, WAusehydra.aiJoined February 2018659 Following1,831 FollowersPostsRepliesHighlightsArticlesMediaLikesMichael Mag\u00e1n\u2019s postsYou repostedJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
       "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3KMichael Mag\u00e1n@mrmagan_\u00b7Sep 20rejected by @ycombinator?",
@@ -34,8 +34,7 @@
   {
     "name": "aaron begg",
     "tweets": [
-      "Aaron Begg2,041 postsSee new postsFollowClick to Follow aaron_beggAaron Begg@aaron_begg@AnthropicAI | Chat with Claude: http://claude.ai | Build with Claude: http://anthropic.com/apiScience & TechnologySan Francisco, CAanthropic.comJoined November 20211,472 Following2,313 FollowersFollowed by Alex Albert, mylene mae, and 4 others you followPostsRepliesMediaAaron Begg\u2019s postsAaron Begg repostedeverett@typochondriac\u00b710h\"Taste\" isn't just curating \"cool\"\u2014it's the ability to sense subtle differences on your cultural palette and communicate them effectively. It helps others see what you see, hear what you hear. It's about EQ + IQ and expression, not just output.QuoteAravind Srinivas@AravSrinivas\u00b723h\"In an age of abundance, we treasure taste. Claude and Perplexity are the current tastemakers in the AI category\" - From Taste is Eating Silicon Valley, @anuatluru  x.com/anuatluru/stat\u202641322.1KAaron Begg repostedJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
-      "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
+      "The @AITinkerers Humans-in-the-Loop: Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3KAaron Begg repostedRiley Goodside@goodside\u00b7Sep 20Anthropic's prompt caching really should be better known. A lot of features that distinguish LLM vendors are incremental nice-to-haves, but prompt caching enables algorithms otherwise too slow and costly to consider:QuoteAlex Albert@alexalbert__\u00b7Sep 19Excited to share our latest research on Contextual Retrieval - a technique that reduces incorrect chunk retrieval rates by up to 67%.",
       "When combined with prompt caching, it may be one of the best techniques there is for implementing retrieval in RAG apps.",
       "Let me explain:Show more51111311KAaron Begg repostedAlex Albert@alexalbert__\u00b7Sep 19Excited to share our latest research on Contextual Retrieval - a technique that reduces incorrect chunk retrieval rates by up to 67%.",
@@ -51,7 +50,7 @@
   {
     "name": "aaron villalpando",
     "tweets": [
-      "Aaron Villalpando5,082 postsSee new postsFollowClick to Follow aaron__viAaron Villalpando@aaron__viFounder, engineer. Building the best AI engineering DX at Boundary. (YC W23). @BoundaryMLboundaryml.comJoined August 20111,376 Following4,486 FollowersFollowed by Kenneth Cassel, william, and 12 others you followPostsRepliesHighlightsMediaAaron Villalpando\u2019s postsPinnedAaron Villalpando@aaron__vi\u00b7Aug 27We're converting all of YC from Langchain to BAML. One at a time.664442KAaron Villalpando repostedAI Tinkerers@AITinkerers\u00b7Sep 19A series of Humans-in-the-Loop Agents Hackathons!    with @AnthropicAI and @CopilotKit",
+      "Building the best AI engineering DX at Boundary. (YC W23). @BoundaryMLboundaryml.comJoined August 20111,376 Following4,486 FollowersFollowed by Kenneth Cassel, william, and 12 others you followPostsRepliesHighlightsMediaAaron Villalpando\u2019s postsPinnedAaron Villalpando@aaron__vi\u00b7Aug 27We're converting all of YC from Langchain to BAML. One at a time.664442KAaron Villalpando repostedAI Tinkerers@AITinkerers\u00b7Sep 19A series of Humans-in-the-Loop Agents Hackathons!    with @AnthropicAI and @CopilotKit",
       "Seattle this weekend with top AI engineers & companies.",
       "SF on Nov 2/3 with @weights_biases.",
       "Seattle's 2X overbooked, so we've opened a virtual hackathon too!  Reg in comments.214192.4KAaron Villalpando@aaron__vi\u00b7Sep 18So they built a new modern city from scratch with *checks notes*\u2026. Stroads?QuoteMurtaza Hussain@MazMHussain\u00b7Sep 17Influencers have started posting about their daily lives in the new Saudi city of Neom. The Saudis seem to be marketing Neom as some kind of planned suburb/encampment for wealthy Westerners:363Aaron Villalpando@aaron__vi\u00b7Sep 18> aws operates on a thin margin",
@@ -81,8 +80,7 @@
   {
     "name": "alex albert",
     "tweets": [
-      "Alex Albert1,128 postsSee new postsFollowingClick to Unfollow alexalbert__Alex Albert@alexalbert__Claude Relations @AnthropicAISan Franciscoalexalbert.meJoined April 2021487 Following43.7K FollowersFollowed by Mihir, Benjamin Klieger, and 51 others you followPostsRepliesMediaAlex Albert\u2019s postsAlex Albert@alexalbert__\u00b7Sep 20Friday console feature drop:",
-      "Ideal outputs form the basis of a good eval so we've added an Ideal Outputs column to Evaluate mode so that you can record the output you want from Claude for a specific prompt + input.92833425KAlex Albert@alexalbert__\u00b7Sep 19Excited to share our latest research on Contextual Retrieval - a technique that reduces incorrect chunk retrieval rates by up to 67%.",
+      "Friday console feature drop: Ideal outputs form the basis of a good eval so we've added an Ideal Outputs column to Evaluate mode so that you can record the output you want from Claude for a specific prompt + input.92833425KAlex Albert@alexalbert__\u00b7Sep 19Excited to share our latest research on Contextual Retrieval - a technique that reduces incorrect chunk retrieval rates by up to 67%.",
       "When combined with prompt caching, it may be one of the best techniques there is for implementing retrieval in RAG apps.",
       "Let me explain:552772K279KShow more repliesAlex Albert@alexalbert__\u00b7Sep 19This technique used to be prohibitively expensive to implement since you need to call Claude and pass in a full document for each chunk.",
       "But thanks to prompt caching, Contextual Retrieval is uniquely cost-effective.",
@@ -102,7 +100,6 @@
   {
     "name": "atai barkai",
     "tweets": [
-      "Atai Barkai2,024 postsSee new postsFollowingClick to Unfollow ataiiamAtai Barkai@ataiiamFollows youBuilding CopilotKit | ex-@Meta | Author of PsyPhy (experimentally testable physics theory of consciousness) |  Physics BA & MSc @PennScience & Technologygithub.com/CopilotKit/Cop\u2026Joined January 20191,831 Following1,316 FollowersFollowed by killian, CopilotKit, and 8 others you followPostsRepliesHighlightsMediaAtai Barkai\u2019s postsAtai Barkai repostedJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
       "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3KAtai Barkai repostedAI Tinkerers@AITinkerers\u00b7Sep 19A series of Humans-in-the-Loop Agents Hackathons!    with @AnthropicAI and @CopilotKit",
       "Seattle this weekend with top AI engineers & companies.",
@@ -140,8 +137,7 @@
   {
     "name": "dexter horthy",
     "tweets": [
-      "dex501 postsSee new postsFollowingClick to Unfollow dexhorthydex@dexhorthyFollows youHacking on things @humanlayer_dev. Previously @replicatedhq @SproutSocialJoined January 2017509 Following711 FollowersFollowed by Atai Barkai, Kartik, and 2 others you followPostsRepliesMediadex\u2019s postsPinneddex@dexhorthy\u00b7Apr 24, 2017Deployed my blog on Kubernetes342.7K5.4Kdex repostedJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
-      "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
+      "The @AITinkerers Humans-in-the-Loop: Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3Kdex@dexhorthy\u00b710hwow, is that @ataiiam giving the @AITinkerers hackathon crowd the lowdown on build-time vs run-time",
       "Human in the loop!? Incredible127162dex@dexhorthy\u00b7Sep 20a lot of you are out here trying to get the rocks to crunch the numbers faster",
       "me, I'm on the hunt for the slowest and most expensive way to add 2 + 5 + 3 + 4146dex@dexhorthy\u00b7Sep 20GIF18You might likeSnowman@builtbysnowmanFollowClick to Follow builtbysnowmanJessica Deen@jldeenFollowClick to Follow jldeenPete Cheslock@petecheslockFollowClick to Follow petecheslockShow moreTrending nowExploreBetaFBI Search at NYPD Commissioner's HomeTrending now \u00b7 CrimeMixed Reactions to iOS 18 Update5 hours ago \u00b7 TechnologyShedeur Sanders as Top QB ProspectTrending now \u00b7 FootballNetwork State Conference 2024 in SingaporeTrending now \u00b7 TechnologyShow moreTerms of ServicePrivacy PolicyCookie PolicyAccessibilityAds infoMore\u00a9 2024 X Corp."
@@ -155,7 +151,6 @@
   {
     "name": "horus hernandez",
     "tweets": [
-      "Horus6 postsSee new postsFollowClick to Follow hsurohHorus@hsurohstreams of consciousnessUnited StatesJoined December 201473 Following98 FollowersNot followed by anyone you\u2019re followingPostsRepliesMediaHorus\u2019s postsHorus@hsuroh\u00b7Aug 27In the short-term, the federal reserve can cause stock prices to have meteoric rises or falls, like a trampoline. However, business fundamentals are what truly matter in the long run, and serve as the bedrock from which a stock price can grow sustainably.114Horus repostedNBC Olympics & Paralympics@NBCOlympics\u00b7Aug 1SOAK IT IN, SIMONE!",
       "The national anthem plays for TWO-time Olympic all-around champion, Simone Biles.  #ParisOlympics493583.9K2.1MHorus repostedNBC Sports@NBCSports\u00b7Aug 1Emotional moments as The Star-Spangled Banner rings out for the U.S. men's four rowing team.  #ParisOlympics1321K11K271KHorus@hsuroh\u00b7Jul 27Ai illiteracy is the new form of illiteracy117Horus repostedChamath Palihapitiya@chamath\u00b7Oct 24, 2023Some interesting charts attached. What are the takeaways:",
       "1) RoW is falling behind US companies. If you look at global indices like MSCI World Index - a good proxy for global growth, it shows the relative strength of the US vs the rest of the world.",
       "2) As an implication ofShow more1471791.4K509KWho to followPranav and 9 others followPatrick@_patrickpcFollows youFollowClick to Follow _patrickpcballer, building @thoreoai, fortnight @_buildspaceDmitry Alimov and 9 others followJustin Carter@JustinMemphis42Follows youFollowClick to Follow JustinMemphis42building http://btrmeeting.com | spectreseek @_buildspace @_nightsweekends s3, s4, s5Ms Angela Elle  and 9 others followAhmad Elsaeed@ahmadsherif2002Follows youFollowClick to Follow ahmadsherif2002@nyuabudhabi grad, prev. @cerclihq @_arrayah, currently at @_TheResidencyYou might likePatrick@_patrickpcFollows youFollowClick to Follow _patrickpcJustin Carter@JustinMemphis42Follows youFollowClick to Follow JustinMemphis42pablooomvc@_pabloomvcFollowClick to Follow _pabloomvcShow moreTrending nowExploreBetaFBI Search at NYPD Commissioner's HomeTrending now \u00b7 CrimeMixed Reactions to iOS 18 Update5 hours ago \u00b7 TechnologyShedeur Sanders as Top QB ProspectTrending now \u00b7 FootballNetwork State Conference 2024 in SingaporeTrending now \u00b7 TechnologyShow moreTerms of ServicePrivacy PolicyCookie PolicyAccessibilityAds infoMore\u00a9 2024 X Corp."
@@ -188,8 +183,7 @@
   {
     "name": "joe heitzeberg",
     "tweets": [
-      "Joe Heitzeberg8,270 postsSee new postsFollowingClick to Unfollow jheitzebJoe Heitzeberg@jheitzebFollows youAI Tinkerers global, co-founder of Crowd Cow, 2019 Allen School Alumni Impact Award, MIT, weekly 1:1 with my AIView moreSeattle, WAaitinkerers.orgBorn September 26Joined June 2007971 Following5,292 FollowersFollowed by killian, Melissa Turner, and 36 others you followPostsRepliesMediaJoe Heitzeberg\u2019s postsJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
-      "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
+      "The @AITinkerers Humans-in-the-Loop: Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3KJoe Heitzeberg@jheitzeb\u00b74hHere's an AI summary of the *waitlist* to this weekend's event (with bold and filler words removed).  Group here is stellar. very excited to see what we build this weekend3154Joe Heitzeberg repostedJoe Heitzeberg@jheitzeb\u00b710hThe @AITinkerers Humans-in-the-Loop",
       "Hackathon is officially underway! \u2022 Excited to see the innovation unfold over the next 48 hours.",
       "Big thanks to @Anthropic, @CopilotKit, and all our sponsors! @digitalocean @e2b_dev @neondatabase @humanlayer_dev @MadronaVenturesShow more14312.3KJoe Heitzeberg@jheitzeb\u00b7Sep 20To avoid vendor lock-in and related switching costs - especially as these base models improve quickly.  Another motivation is preserving optionality, i.e. iterate on closed models then switch to open models on private cloud after product market fit. Thoughts?QuoteRaouf Chebri @_raoufai\u00b7Sep 20Wow  this is not the result I anticipated.",
@@ -211,8 +205,7 @@
   {
     "name": "jon turow",
     "tweets": [
-      "jturow233 postsSee new postsFollowingClick to Unfollow jturowjturow@jturowBuilder. Partner at Madrona Venture Group. Former Amazon AWS.Science & TechnologySeattle, WAJoined January 20092,646 Following1,398 FollowersFollowed by Fixie.ai , killian, and 12 others you followPostsRepliesMediajturow\u2019s postsjturow@jturow\u00b7Jul 1Fun conversation about the future of Open Source AI with @lvdmaaten of Meta, @jefrankle of Databricks, and Ali Farhadi of Ai2.",
-      "These folks and others are investing heavily to put more control in the hands of AI developers. And that creates a counterweight to closed models, aShow more361.5Kjturow repostedUnstructuredIO@UnstructuredIO\u00b7Jun 20 We\u2019re Live: Unstructured Serverless API is Here!",
+      "Fun conversation about the future of Open Source AI with @lvdmaaten of Meta, @jefrankle of Databricks, and Ali Farhadi of Ai2.: These folks and others are investing heavily to put more control in the hands of AI developers. And that creates a counterweight to closed models, aShow more361.5Kjturow repostedUnstructuredIO@UnstructuredIO\u00b7Jun 20 We\u2019re Live: Unstructured Serverless API is Here!",
       "We\u2019re excited to announce that Unstructured Serverless API delivers:",
       "Simplified Onboarding and User Dashboard: Easily manage your keys, billing options, and monitor usage through an intuitive dashboard.",
       "New Per-PageShow more216346.1Kjturow repostedPaul Klein IV@pk_iv\u00b7Jun 6Happy to share Browserbase with the world today.",
