@@ -27,19 +27,19 @@ export const HydraCard: React.FC<HydraCardType> = ({
 }) => {
   const { setSelectedCofounder } = useChatStore()
   const { setMessage } = useChatInputStore()
-  const [isHighlighted, setIsHighlighted] = useState(false)
+  const [isSelected, setIsSelected] = useState(false)
 
   const handleClick = () => {
     if (title) {
       setSelectedCofounder(title)
       setMessage(`Tell me more about ${title}`)
-      setIsHighlighted(true)
+      setIsSelected(prevState => !prevState)
     }
   }
 
   return (
     <Card 
-      className={`${className} cursor-pointer ${isHighlighted ? 'bg-green-100 dark:bg-green-900' : ''}`}
+      className={`${className} cursor-pointer ${isSelected ? 'border-green-500 border-2' : ''}`}
       onClick={handleClick}
     >
       <CardHeader>
