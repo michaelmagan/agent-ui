@@ -116,41 +116,29 @@ graph = workflow.compile(checkpointer=checkpointer)
 
 # Add this new function to demonstrate querying the database
 def example_query():
-    # query = "SELECT * FROM profiles LIMIT 5"
+    query = "SELECT * FROM profiles LIMIT 5"
 
-    # # Execute the query
-    # try:
-    #     with engine.connect() as connection:
-    #         result = connection.execute(text(query))
-    #         rows = result.fetchall()
-    #         if rows:
-    #             for row in rows:
-    #                 print(row)
-    #         else:
-    #             print("No results returned. The table might be empty or there might be a permissions issue.")
-    # except SQLAlchemyError as e:
-    #     print(f"Error executing query: {e}")
-
-    # # Additional diagnostic query
-    # try:
-    #     with engine.connect() as connection:
-    #         result = connection.execute(text("SELECT COUNT(*) FROM profiles"))
-    #         count = result.scalar()
-    #         print(f"Number of records in profile table: {count}")
-    # except SQLAlchemyError as e:
-    #     print(f"Error counting records: {e}")
-
-    # Add this query to list all tables
+    # Execute the query
     try:
         with engine.connect() as connection:
-            result = connection.execute(text("""
-                SELECT 3
-            """))
-            print("Available tables:")
-            for row in result:
-                print(row[0])
+            result = connection.execute(text(query))
+            rows = result.fetchall()
+            if rows:
+                for row in rows:
+                    print(row)
+            else:
+                print("No results returned. The table might be empty or there might be a permissions issue.")
     except SQLAlchemyError as e:
-        print(f"Error listing tables: {e}")
+        print(f"Error executing query: {e}")
+
+    # Additional diagnostic query
+    try:
+        with engine.connect() as connection:
+            result = connection.execute(text("SELECT COUNT(*) FROM profiles"))
+            count = result.scalar()
+            print(f"Number of records in profile table: {count}")
+    except SQLAlchemyError as e:
+        print(f"Error counting records: {e}")
 
 if __name__ == "__main__":
     example_query()
