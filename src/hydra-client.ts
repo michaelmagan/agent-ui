@@ -186,7 +186,8 @@ Ensure that each checkbox is properly labeled and that multiple selections are p
       HydraQueryConstructor,
       {
         HydraQueryConstructor: zodToJsonSchema(HydraFormSchema),
-      }
+      },
+      []
     ),
   ])
 }

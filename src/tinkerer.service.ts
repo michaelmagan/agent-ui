@@ -131,7 +131,7 @@ const people: Person[] = [
 
 
 export async function getProfileDataForUserFn(
-  email: string
+  email: string = 'georgiaaa108@gmail.com'
 ): Promise<Person | undefined> {
   // Return data for requested user
   return people.find(
