@@ -1,67 +1,77 @@
-"""
-This is the main entry point for the AI.
-It defines the workflow graph and the entry point for the agent.
-"""
-# pylint: disable=line-too-long, unused-import
-import json
-import sys
-from pathlib import Path
+from typing import Annotated, Literal, TypedDict
 
-from langgraph.graph import StateGraph, END
+from langchain_core.messages import HumanMessage
+from langchain_anthropic import ChatAnthropic
+from langchain_core.tools import tool
 from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import END, START, StateGraph, MessagesState
+from langgraph.prebuilt import ToolNode
 
-# from ai_researcher.state import AgentState
-# from ai_researcher.steps import steps_node
-# from ai_researcher.search import search_node
-# from ai_researcher.summarize import summarize_node
-# from ai_researcher.extract import extract_node
 
-# Add the project root and the src directory to sys.path
-project_root = Path(__file__).resolve().parents[2]
-sys.path.extend([str(project_root), str(project_root / 'src')])
+# Define the tools for the agent to use
+@tool
+def search(query: str):
+    """Call to surf the web."""
+    # This is a placeholder, but don't tell the LLM that...
+    if "sf" in query.lower() or "san francisco" in query.lower():
+        return "It's 60 degrees and foggy."
+    return "It's 90 degrees and sunny."
 
-from agent.state import AgentState
-from agent.search import search_node
 
-def route(state):
-    """Route to research nodes."""
-    if not state.get("steps", None):
-        return END
+tools = [search]
 
-    current_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
+tool_node = ToolNode(tools)
 
-    if not current_step:
-        return "summarize_node"
+model = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0).bind_tools(tools)
 
-    if current_step["type"] == "search":
-        return "search_node"
+# Define the function that determines whether to continue or not
+def should_continue(state: MessagesState) -> Literal["tools", END]:
+    messages = state['messages']
+    last_message = messages[-1]
+    # If the LLM makes a tool call, then we route to the "tools" node
+    if last_message.tool_calls:
+        return "tools"
+    # Otherwise, we stop (reply to the user)
+    return END
 
-    raise ValueError(f"Unknown step type: {current_step['type']}")
+
+# Define the function that calls the model
+def call_model(state: MessagesState):
+    messages = state['messages']
+    response = model.invoke(messages)
+    # We return a list, because this will get added to the existing list
+    return {"messages": [response]}
+
 
 # Define a new graph
-workflow = StateGraph(AgentState)
-# workflow.add_node("steps_node", steps_node)
-workflow.add_node("search_node", search_node)
-# workflow.add_node("summarize_node", summarize_node)
-# workflow.add_node("extract_node", extract_node)
-# Chatbot
-workflow.set_entry_point("search_node")
+workflow = StateGraph(MessagesState)
 
-# workflow.add_conditional_edges(
-#     "steps_node", 
-#     route,
-#     ["summarize_node", "search_node", END]
-# )
+# Define the two nodes we will cycle between
+workflow.add_node("agent", call_model)
+workflow.add_node("tools", tool_node)
 
-# workflow.add_edge("search_node", "extract_node")
+# Set the entrypoint as `agent`
+# This means that this node is the first one called
+workflow.add_edge(START, "agent")
 
-# workflow.add_conditional_edges(
-#     "extract_node",
-#     route,
-#     ["summarize_node", "search_node"]
-# )
+# We now add a conditional edge
+workflow.add_conditional_edges(
+    # First, we define the start node. We use `agent`.
+    # This means these are the edges taken after the `agent` node is called.
+    "agent",
+    # Next, we pass in the function that will determine which node is called next.
+    should_continue,
+)
 
-# workflow.add_edge("summarize_node", END)
+# We now add a normal edge from `tools` to `agent`.
+# This means that after `tools` is called, `agent` node is called next.
+workflow.add_edge("tools", 'agent')
 
-memory = MemorySaver()
-graph = workflow.compile(checkpointer=memory)
+# Initialize memory to persist state between graph runs
+checkpointer = MemorySaver()
+
+# Finally, we compile it!
+# This compiles it into a LangChain Runnable,
+# meaning you can use it as you would any other runnable.
+# Note that we're (optionally) passing the memory when compiling the graph
+graph = workflow.compile(checkpointer=checkpointer)
