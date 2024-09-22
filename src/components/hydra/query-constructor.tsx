@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { HydraForm, HydraFormField } from "@/model/hydra"
+import { useChatInputStore } from "@/components/chat/input"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -25,6 +26,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
   fields,
   className,
 }) => {
+  const { setMessage, inputRef } = useChatInputStore()
   const [formData, setFormData] = useState<Record<string, string | string[]>>(() => {
     console.log('is this working?')
     const initialData: Record<string, string | string[]> = {}
@@ -61,6 +63,22 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
         : suggestion
       return { ...prev, [id]: newValue }
     })
+  }
+
+  const handleSubmit = () => {
+    const formDataString = Object.entries(formData).reduce((acc, [key, value]) => {
+      if (Array.isArray(value) && value.length > 0) {
+        acc += `${key}: ${value.join(', ')}\n`
+      } else if (typeof value === 'string' && value.trim() !== '') {
+        acc += `${key}: ${value}\n`
+      }
+      return acc
+    }, '')
+    
+    setMessage(`I'm interested in finding someone with the following skills and interests:\n\n${formDataString}`)
+    if (inputRef.current) {
+      inputRef.current.textArea.focus()
+    }
   }
 
   return (
@@ -153,7 +171,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
         ))}
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button onClick={() => console.log(formData)}>Submit</Button>
+        <Button onClick={handleSubmit}>Submit</Button>
       </CardFooter>
     </Card>
   )

@@ -22,7 +22,7 @@ const buttonVariants = cva(
         outline4D908E: "border-2 border-[#4D908E] bg-transparent text-[#4D908E] hover:bg-[#4D908E] hover:text-white",
         outline90BE6D: "border-2 border-[#90BE6D] bg-transparent text-[#90BE6D] hover:bg-[#90BE6D] hover:text-white",
         outlineF8961E: "border-2 border-[#F8961E] bg-transparent text-[#F8961E] hover:bg-[#F8961E] hover:text-white",
-        outlineX: "border-2 dark:border-[#FFF] dark:hover:bg-white dark:hover:text-black dark:text-white border-black bg-transparent text-black hover:bg-black hover:text-white",
+        outlineX: "border-2 dark:border-[#FFF] dark:hover:bg-white dark:hover:text-black dark:text-white border-black bg-transparent text-black hover:bg-background hover:text-white",
         outlineLinkedin: "border-2 border-[#0A66C2] bg-transparent text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white",
       },
       size: {

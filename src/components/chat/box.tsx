@@ -20,8 +20,6 @@ const componentFlow = [
     name: "Feedback",
     description:
       "Ask the user questions to clarify their query for teamates, co-founders, or friends.",
-    title: "Find matching founders",
-    query: "Show me potential co-founders based on my clarified needs.",
   },
   {
     name: "HydraCarousel",
@@ -101,7 +99,14 @@ export default function ChatBox() {
     try {
       const nextComponent = getNextComponentFlow()
       const { setRandomSuggestions } = useSuggestionBarStore.getState()
-      setRandomSuggestions([nextComponent])
+      setRandomSuggestions(
+        nextComponent.title && nextComponent.query
+          ? [{
+              title: nextComponent.title,
+              query: nextComponent.query
+            }]
+          : []
+      )
 
       // This is just a hack to get the hydra client to generate the next component in the flow
       const messageWithComponent =

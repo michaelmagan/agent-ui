@@ -79,17 +79,7 @@ export function SuggestionBar() {
     return outlineVariants[index]
   }
 
-  if (isLoading) {
-    return (
-      <div className="max-w-screen-8xl z-10 mx-auto flex w-full flex-col items-start gap-4 px-2 py-4">
-        <Button variant="ghost" className="animate-pulse">
-          Generating suggested actions...
-        </Button>
-      </div>
-    )
-  }
-
-  if (randomSuggestions.length === 0) {
+  if (isLoading || randomSuggestions.length === 0) {
     return null
   }
 

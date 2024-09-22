@@ -30,11 +30,11 @@ export const HydraCarousel: React.FC<HydraCarouselType> = ({
 
   return (
     <div className="mx-auto w-full max-w-6xl mt-4">
-      <Carousel className={className}>
+      <Carousel className={`${className} bg-background`}>
         <CarouselContent>
           {cards.map((card, index) => (
             <CarouselItem key={index} className="sm:basis-2/3 md:basis-1/2">
-              <div className="p-1">
+              <div className="p-1 h-full">
                 <HydraCard {...card} className="h-full" />
               </div>
             </CarouselItem>
