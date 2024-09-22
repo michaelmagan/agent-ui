@@ -22,6 +22,8 @@ export const RecentTweets: React.FC<RecentTweetsProps> = ({ tweets }) => {
     window.open(`https://twitter.com/${handle}`, '_blank');
   };
 
+  const defaultAvatarUrl = "https://pbs.twimg.com/profile_images/1569835396527456257/wVf2FVO0_400x400.jpg";
+
   return (
     <div className="space-y-4">
       {tweets.slice(0, 3).map((tweet) => (
@@ -32,7 +34,7 @@ export const RecentTweets: React.FC<RecentTweetsProps> = ({ tweets }) => {
         >
           <CardHeader className="flex flex-row items-center space-x-4 pb-2">
             <Avatar className="h-10 w-10">
-              <AvatarImage src={tweet.author.avatarUrl} alt={tweet.author.name} />
+              <AvatarImage src={defaultAvatarUrl} alt={tweet.author.name} />
               <AvatarFallback>{tweet.author.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="w-full">
