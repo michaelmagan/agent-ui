@@ -72,7 +72,7 @@ export const registerHydraComponents = async (hydra: HydraClient) => {
       {
         HydraCarousel: zodToJsonSchema(HydraCarouselSchema),
       },
-      [getYCDataTool]
+      [getAllUserProfiles]
     ),
     hydra.registerComponent(
       "HydraText",
