@@ -64,7 +64,7 @@ export const HydraQueryConstructor: React.FC<HydraForm> = ({
   }
 
   return (
-    <Card className={className}>
+    <Card className={`${className} mt-4`}>
       <CardHeader>{title && <CardTitle>{title}</CardTitle>}</CardHeader>
       <CardContent>
         {fields.map((field: HydraFormField, index) => (

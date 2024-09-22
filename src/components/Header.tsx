@@ -10,7 +10,7 @@ export const Header: FunctionComponent = () => {
         <div className="flex flex-col">
           <div className="flex items-center space-x-2">
             <div className="flex items-center justify-center w-10 h-10 border-2 border-[#43AA8B] dark:bg-black bg-white rounded-full">
-              <UsersIcon className="w-5 h-5 text-[#F9C74F]" />
+              <UsersIcon className="w-5 h-5 text-[#277DA1]" />
             </div>
             <div>
               <h1 className="text-2xl font-bold">
