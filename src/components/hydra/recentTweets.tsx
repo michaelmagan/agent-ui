@@ -29,7 +29,7 @@ export const RecentTweets: React.FC<RecentTweetsProps> = ({ tweets }) => {
       {tweets.slice(0, 3).map((tweet) => (
         <Card 
           key={tweet.id} 
-          className="w-full cursor-pointer hover:bg-gray-900 transition-colors duration-200"
+          className="w-full cursor-pointer hover:bg-gray-900 transition-colors duration-200 mt-4"
           onClick={() => handleCardClick(tweet.author.handle)}
         >
           <CardHeader className="flex flex-row items-center space-x-4 pb-2">
