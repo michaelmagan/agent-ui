@@ -21,9 +21,11 @@ export const Profile: React.FC<ProfileProps> = ({
   compatibilityScore,
 }) => {
   const [feedback, setFeedback] = useState<'positive' | 'negative' | null>(null);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleFeedback = (type: 'positive' | 'negative' | null) => {
     setFeedback(type);
+    setIsPopoverOpen(false);
   };
 
   const getFeedbackBorderClass = () => {
@@ -40,7 +42,7 @@ export const Profile: React.FC<ProfileProps> = ({
   };
 
   return (
-    <Popover>
+    <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <PopoverTrigger asChild>
         <Card className={`mt-4 w-full max-w-sm border-2 ${getFeedbackBorderClass()}`}>
           <CardHeader className="flex flex-row items-center space-x-4 pb-2 mb-2">
