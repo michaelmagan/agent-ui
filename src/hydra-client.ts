@@ -36,6 +36,32 @@ const getYCDataTool = {
   },
 }
 
+const getProfileDataForUser = {
+  getComponentContext: getProfileDataForUser,
+  definition: {
+    name: "getProfileDataForUser",
+    description: "Get user profile data from username",
+    parameters: [
+      {
+        name: "email",
+        type: "string",
+        description:
+          "Email of the user whose profile is being queried",
+        isRequired: true,
+      },
+    ],
+  },
+}
+
+const getAllUserProfiles = {
+  getComponentContext: getAllUserProfiles,
+  definition: {
+    name: "getAllUserProfiles",
+    description: "Get all user profiles",
+    parameters: [],
+  },
+}
+
 export const registerHydraComponents = async (hydra: HydraClient) => {
   await Promise.all([
     hydra.registerComponent(
