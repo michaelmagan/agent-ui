@@ -76,7 +76,7 @@ export function ChatInput({ onSendMessage, disabled = false }: ChatInputProps) {
         />
         <Button 
           onClick={handleSendMessage} 
-          className={`h-14 ${disabled ? 'cursor-not-allowed' : ''}`} 
+          className={`h-14 ${disabled ? 'disabled:cursor-not-allowed' : ''}`} 
           disabled={disabled}
         >
           {disabled ? <Loader size={16} className="mr-2" /> : null}

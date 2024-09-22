@@ -32,6 +32,13 @@ export const Profile: React.FC<ProfileProps> = ({
     return 'border-black dark:border-white';
   };
 
+  const getCompatibilityColor = () => {
+    if (compatibilityScore >= 80) return 'bg-green-500';
+    if (compatibilityScore >= 60) return 'bg-yellow-500';
+    if (compatibilityScore >= 40) return 'bg-orange-500';
+    return 'bg-red-500';
+  };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -73,8 +80,16 @@ export const Profile: React.FC<ProfileProps> = ({
                   </Button>
                 )}
               </div>
-              <div className="text-sm font-medium">
-                Compatibility: {compatibilityScore}%
+              <div className="flex flex-col items-end">
+                <div className="text-sm font-medium mb-1">
+                  Compatibility: {compatibilityScore}%
+                </div>
+                <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden w-full mt-2">
+                  <div 
+                    className={`h-full ${getCompatibilityColor()}`} 
+                    style={{ width: `${compatibilityScore}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
           </CardContent>
