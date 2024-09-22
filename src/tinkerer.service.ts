@@ -137,10 +137,28 @@ const people: Person[] = [
     areas_of_interest:
       "Linux, Containers, AI, GPU, Serverless, Kubernetes, Cloud Architecture, Cloud Infrastructure, Compute.",
     projects: "",
-    twitter_roast:
-      "Jacob, you're the kind of guy who'd try to build a time machine just to ask George Jetson if he needs a copy of 'The Jetsons' on DVD. Your relentless pursuit of perfection borders on the comical, like when you tried to invent a better mousetrap but ended up with a Rube Goldberg machine that could solve world hunger. Your Twitter feed is like a tech support hotline for the future – always troubleshooting the latest AI glitch. Keep trying to fix what ain't broke, Jacob, because your attempts to improve the human condition are as endearing as your attempt to invent a flying car.",
+    twitter_roast: "Jacob, you're the kind of guy who'd try to build a time machine just to ask George Jetson if he needs a copy of 'The Jetsons' on DVD. Your relentless pursuit of perfection borders on the comical, like when you tried to invent a better mousetrap but ended up with a Rube Goldberg machine that could solve world hunger. Your Twitter feed is like a tech support hotline for the future – always troubleshooting the latest AI glitch. Keep trying to fix what ain't broke, Jacob, because your attempts to improve the human condition are as endearing as your attempt to invent a flying car."
   },
-]
+  {
+    id: 6,
+    first_name: "Georgia",
+    last_name: "Phillips",
+    company_name: "Amazon",
+    title: "SDE2",
+    email: "georgiaaa108@gmail.com",
+    linkedin_url: "https://www.linkedin.com/in/georgia-phillips-8a196a17b",
+    twitter_handle: "@georgiaaa108",
+    github_url: "",
+    employment: "Employed",
+    education: "BS in Math and Computer Science at MIT",
+    role: "Other",
+    biography: "",
+    skills: "I'm experienced with a range of technical topics from my time at MIT and on the job. I have a good understanding of cloud computing and modern networking protocols. I've primarily used Java and Python but also have limited experience with front-end tools such as next.js and tailwind css.",
+    areas_of_interest: "I'm looking to learn more about interactive front-end dev and learn from people who are more experienced in shipping full-stack web apps. I'm particularly interested in improving my ability to quickly achieve proof of concept.",
+    projects: "Currently I'm helping tinker on a decision management platform.",
+    twitter_roast: ""
+  }
+];
 
 const tweets: Tweet[] = [
   {
