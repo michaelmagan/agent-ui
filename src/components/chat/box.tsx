@@ -96,17 +96,10 @@ export default function ChatBox() {
 
   const fetchResponse = async (message: string) => {
     setAgentThinking(true)
+    const { setRandomSuggestions } = useSuggestionBarStore.getState()
+    setRandomSuggestions([]) // Set suggestions to empty while agent is thinking
     try {
       const nextComponent = getNextComponentFlow()
-      const { setRandomSuggestions } = useSuggestionBarStore.getState()
-      setRandomSuggestions(
-        nextComponent.title && nextComponent.query
-          ? [{
-              title: nextComponent.title,
-              query: nextComponent.query
-            }]
-          : []
-      )
 
       // This is just a hack to get the hydra client to generate the next component in the flow
       const messageWithComponent =
@@ -136,6 +129,17 @@ export default function ChatBox() {
           message: "Sorry, I received an unexpected response type.",
         })
       }
+
+      setRandomSuggestions(
+        nextComponent.title && nextComponent.query
+          ? [
+              {
+                title: nextComponent.title,
+                query: nextComponent.query,
+              },
+            ]
+          : []
+      )
     } catch (error) {
       console.error("Error fetching response:", error)
       addMessage({
