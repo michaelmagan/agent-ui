@@ -75,15 +75,26 @@ export const HydraTextSchema = z.object({
 export const HydraFormFieldSchema = z.object({
   id: z.string(),
   label: z.string(),
-  type: z.enum(["text", "password", "email", "number", "checkbox"]),
+  type: z.enum(["text", "password", "email", "number", "checkbox", "select", "radio-group"]),
   placeholder: z.string().optional(),
   required: z.boolean().optional(),
+  suggestions: z.array(z.string()).optional(),
+  options: z.array(z.object({
+    label: z.string(),
+    value: z.string(),
+  })).optional(),
+  text: z.string().optional(),
+  className: z.string().optional(),
 })
 
 export const HydraCheckboxSchema = z.object({
   type: z.literal("checkbox"),
   id: z.string(),
   label: z.string(),
+  options: z.array(z.object({
+    label: z.string(),
+    value: z.string(),
+  })).optional(),
   className: z.string().optional(),
 })
 
@@ -91,7 +102,7 @@ export const HydraFormSchema = z.object({
   title: z.string().optional(),
   fields: z.array(z.union([HydraFormFieldSchema, HydraCheckboxSchema])),
   submitButton: z.string(),
-  onSubmit: z.function().args(z.record(z.string(), z.string())).returns(z.void()),
+  onSubmit: z.function().args(z.record(z.string(), z.union([z.string(), z.array(z.string())]))).returns(z.void()),
   className: z.string().optional(),
 })
 

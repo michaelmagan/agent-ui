@@ -20,8 +20,8 @@ export function SuggestionBar() {
       query: "Find a coworker with expertise in React and TypeScript.",
     },
     {
-      title: "Collaborative spirit",
-      query: "Look for a collaborative team player with great communication skills.",
+      title: "Perfect match for my skills",
+      query: "I'm looking for a co-founder. Can you help me find someone with complementary skills as me?",
     },
     {
       title: "Innovative problem-solver",
