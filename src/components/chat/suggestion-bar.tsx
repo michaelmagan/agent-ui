@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { useChatInputStore } from "@/components/chat/input"
@@ -66,7 +67,7 @@ export function SuggestionBar() {
   if (isLoading) {
     return (
       <div className="z-10 mx-auto w-full flex flex-col items-start gap-4 px-2 py-4 max-w-screen-8xl">
-        <Button variant="outline" className="animate-pulse">
+        <Button variant="ghost" className="animate-pulse">
           Generating suggested actions...
         </Button>
       </div>
@@ -77,13 +78,19 @@ export function SuggestionBar() {
     <div className="z-10 mx-auto w-full flex flex-col items-center gap-4 px-2 py-4 max-w-screen-8xl">
       <div className="w-full flex items-center gap-4 overflow-x-auto">
         {randomSuggestions.map((suggestion, index) => (
-          <Button
+          <motion.div
             key={index}
-            variant={getRandomOutlineVariant(index)}
-            onClick={() => handleSuggestionClick(suggestion.query)}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            {suggestion.title}
-          </Button>
+            <Button
+              variant={getRandomOutlineVariant(index)}
+              onClick={() => handleSuggestionClick(suggestion.query)}
+            >
+              {suggestion.title}
+            </Button>
+          </motion.div>
         ))}
       </div>
     </div>

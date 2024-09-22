@@ -29,13 +29,13 @@ export const Profile: React.FC<ProfileProps> = ({
   const getFeedbackBorderClass = () => {
     if (feedback === 'positive') return 'border-green-500';
     if (feedback === 'negative') return 'border-red-500';
-    return 'border-white';
+    return 'border-black dark:border-white';
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Card className={`mt-2 w-full max-w-sm border-2 ${getFeedbackBorderClass()}`}>
+        <Card className={`mt-4 w-full max-w-sm border-2 ${getFeedbackBorderClass()}`}>
           <CardHeader className="flex flex-row items-center space-x-4 pb-2 mb-2">
             <Avatar className="h-12 w-12">
               <AvatarImage src={avatarUrl} alt={name} />
@@ -55,7 +55,7 @@ export const Profile: React.FC<ProfileProps> = ({
                         height="16"
                         viewBox="0 0 1200 1227"
                         fill="none"
-                        className="hover:fill-black"
+                        className="hover:fill-white dark:fill-white"
                       >
                         <path
                           d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"

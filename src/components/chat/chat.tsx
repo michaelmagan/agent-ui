@@ -75,7 +75,7 @@ export function Chat({ messages, isLoading }: ChatProps) {
                   transition={{ duration: 0.3 }}
                   className={
                     message.sender === "user"
-                      ? "float-right inline-block rounded-lg bg-primary px-4 py-3 text-primary-foreground"
+                      ? "float-right inline-block rounded-lg bg-primary bg-[#277DA1] px-4 py-3 text-white"
                       : "inline-block rounded-lg bg-muted px-4 py-3"
                   }
                 >
