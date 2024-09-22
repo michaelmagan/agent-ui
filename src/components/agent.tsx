@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 const Agent: React.FC = () => {
   const { state, setState, start, stop, run, running } = useCoAgent({
-    name: "cofinder_agent",
+    name: "anthropic_agent",
   })
 
   const handleToggleAgent = () => {

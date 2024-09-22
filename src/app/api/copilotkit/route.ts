@@ -9,9 +9,15 @@ import OpenAI from "openai"
 const openai = new OpenAI()
 const serviceAdapter = new OpenAIAdapter({ openai })
 
-const runtime = new CopilotRuntime()
+const runtime = new CopilotRuntime({
+  remoteActions: [
+    {
+      url: `http://localhost:8000/copilotkit`,
+    },
+  ],
+})
 
-export const POST = async (req: NextRequest) => {
+export async function POST(req: NextRequest) {
   const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
     runtime,
     serviceAdapter,
